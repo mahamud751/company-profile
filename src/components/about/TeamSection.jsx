@@ -140,7 +140,7 @@ export default function TeamSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             A collective of passionate creatives, strategic thinkers, and
-            technical wizards dedicated to crafting extraordinary digital
+            technical wizards dedicated to crazy solve extraordinary digital
             experiences.
           </motion.p>
         </motion.div>

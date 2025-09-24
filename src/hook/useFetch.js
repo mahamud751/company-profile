@@ -9,7 +9,7 @@ const UseFetch = (path) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`https://api.protoja.com/api/${path}`);
+        const res = await axios.get(`https://api.crazy.com/api/${path}`);
         setData(res.data);
       } catch (err) {
         setError(err);
@@ -22,7 +22,7 @@ const UseFetch = (path) => {
   const reFetch = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`https://api.protoja.com/api/${path}`);
+      const res = await axios.get(`https://api.crazy.com/api/${path}`);
       setData(res.data);
     } catch (err) {
       setError(err);

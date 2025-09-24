@@ -57,8 +57,7 @@ const caseStudies = [
     category: "React Js",
     desc: "Social site where user can share photo, like , follow users, add friends, chat with friends. Admin can also control add friends and chatting options. Now by default everyone admin but when a client want to everything private then just contract us",
     fullDesc: "Social Application",
-    image:
-      "https://i.ibb.co.com/tTFLw69k/social-app-1-4-11zon.webp",
+    image: "https://i.ibb.co.com/tTFLw69k/social-app-1-4-11zon.webp",
     img1: "https://i.ibb.co.com/4w7xvyCN/social-app-2-5-11zon.webp",
     img2: "https://i.ibb.co.com/FLNCXnSF/social-app-3-6-11zon.webp",
     img3: "https://i.ibb.co.com/39nhjHwC/social-app-4-7-11zon.webp",
@@ -186,8 +185,7 @@ const caseStudies = [
     category: "React Js",
     desc: "Admin can add, delete, edit and control all exams, courses, exams, comments, exam date etc",
     fullDesc: "Education Website",
-    image:
-      "https://i.ibb.co.com/8LD9skmf/education-1-6-11zon.webp",
+    image: "https://i.ibb.co.com/8LD9skmf/education-1-6-11zon.webp",
     img1: "https://i.ibb.co.com/zhPbG3n1/education-2-7-11zon.webp",
     img2: "https://i.ibb.co.com/DDJ0gxbL/education-3-8-11zon.webp",
     img3: "https://i.ibb.co.com/zWNRQhcQ/education-4-9-11zon.webp",
@@ -334,7 +332,8 @@ const caseStudies = [
     category: "Others",
     desc: " A office management system",
     fullDesc: " A office management system",
-    image: "https://i.ibb.co.com/Mx2Bqq94/officemaintain-1-Copy-Copy-1-11zon.webp",
+    image:
+      "https://i.ibb.co.com/Mx2Bqq94/officemaintain-1-Copy-Copy-1-11zon.webp",
     img1: "https://i.ibb.co.com/n8bjJx9W/officemaintain-2.webp",
     img2: "https://i.ibb.co.com/S4b3HL82/officemaintain-3-Copy-5-11zon.webp",
     img3: "https://i.ibb.co.com/S4b3HL82/officemaintain-3-Copy-5-11zon.webp",
@@ -438,7 +437,7 @@ const caseStudies = [
     img1: "https://i.ibb.co.com/0pqRyKLk/smilezoneshop-3-2-11zon.webp",
     img2: "https://i.ibb.co.com/9kfPBdnG/smilezoneshop-3-1-11zon.webp",
     img3: "https://i.ibb.co.com/wNTN9ZT1/smilezoneshop-4-3-11zon.webp",
-    
+
     tags: [
       "HTML5",
       "CSS3",
@@ -549,7 +548,7 @@ export default function CaseStudiesGrid() {
   };
 
   return (
-    <section className="px-4 py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50">
+    <section className="px-4 py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 min-h-screen">
       <div className="max-w-7xl mx-auto">
         {/* Header with Filters */}
         <motion.div
@@ -592,7 +591,7 @@ export default function CaseStudiesGrid() {
           </div>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-3 bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+          <div className="flex flex-wrap justify-center gap-3 bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/30 shadow-lg">
             {categories.map((category) => (
               <motion.button
                 key={category}
@@ -623,7 +622,7 @@ export default function CaseStudiesGrid() {
 
         {/* Projects Grid */}
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch"
           variants={containerVariants}
           initial="hidden"
           animate={isMounted ? "visible" : "hidden"}
@@ -696,36 +695,42 @@ function CaseStudyCard({
       {/* Featured Badge */}
       {study.featured && (
         <motion.div
-          className="absolute -top-2 -right-2 z-20 bg-gradient-to-r from-[#fd5001] to-[#ff8c00] text-white px-3 py-1 rounded-full text-xs font-bold"
+          className="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-[#fd5001] to-[#ff8c00] text-white px-4 py-2 rounded-full text-xs font-bold shadow-xl"
           initial={{ scale: 0, rotate: -45 }}
           animate={isMounted ? { scale: 1, rotate: 0 } : {}}
-          transition={{ delay: index * 0.1 + 0.5 }}
+          transition={{
+            delay: index * 0.1 + 0.5,
+            type: "spring",
+            stiffness: 200,
+          }}
+          whileHover={{ scale: 1.1, rotate: 5 }}
         >
-          Featured
+          ✨ Featured
         </motion.div>
       )}
 
       {/* Main Card */}
       <motion.div
-        className="relative bg-white/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/20"
+        className="relative bg-white/90 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/30 h-full flex flex-col"
         whileHover={{ scale: 1.02 }}
         style={{
           background: isHovered
             ? "linear-gradient(135deg, rgba(253, 80, 1, 0.1), rgba(255, 140, 0, 0.1))"
-            : "rgba(255, 255, 255, 0.8)",
+            : "rgba(255, 255, 255, 0.9)",
         }}
       >
         {/* Image Container */}
-        <div className="relative overflow-hidden aspect-[4/3]">
+        <div className="relative overflow-hidden h-64">
           <motion.div
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.6 }}
+            className="w-full h-full"
           >
             <Image
               src={study.image}
               alt={study.title}
               width={400}
-              height={300}
+              height={256}
               className="w-full h-full object-cover"
               priority={index < 6}
             />
@@ -736,77 +741,101 @@ function CaseStudyCard({
 
           {/* Hover Actions */}
           <motion.div
-            className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
           >
             <motion.button
-              className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-[#fd5001] transition-colors duration-300"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+              className="w-14 h-14 bg-white/25 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-[#fd5001] hover:scale-110 transition-all duration-300 shadow-lg"
+              whileHover={{ scale: 1.2, rotate: 5 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={(e) => {
+                e.stopPropagation();
+                onSelect(study);
+              }}
             >
-              <Play className="w-5 h-5 ml-0.5" />
+              <Play className="w-6 h-6 ml-0.5" />
             </motion.button>
-            <motion.button
-              className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-[#fd5001] transition-colors duration-300"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+            <motion.a
+              href={study.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-14 h-14 bg-white/25 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-[#fd5001] hover:scale-110 transition-all duration-300 shadow-lg"
+              whileHover={{ scale: 1.2, rotate: -5 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={(e) => e.stopPropagation()}
             >
-              <ExternalLink className="w-5 h-5" />
-            </motion.button>
+              <ExternalLink className="w-6 h-6" />
+            </motion.a>
           </motion.div>
 
           {/* Stats Overlay */}
           <div className="absolute top-4 left-4 flex gap-2">
-            <div className="flex items-center gap-1 px-2 py-1 bg-black/30 backdrop-blur-sm rounded-full text-white text-xs">
+            <motion.div
+              className="flex items-center gap-1 px-3 py-1.5 bg-black/40 backdrop-blur-md rounded-full text-white text-xs font-medium shadow-lg"
+              whileHover={{ scale: 1.05 }}
+            >
               <Eye className="w-3 h-3" />
               <span>{study.views}</span>
-            </div>
-            <div className="flex items-center gap-1 px-2 py-1 bg-black/30 backdrop-blur-sm rounded-full text-white text-xs">
-              <Heart className="w-3 h-3" />
+            </motion.div>
+            <motion.div
+              className="flex items-center gap-1 px-3 py-1.5 bg-black/40 backdrop-blur-md rounded-full text-white text-xs font-medium shadow-lg"
+              whileHover={{ scale: 1.05 }}
+            >
+              <Heart className="w-3 h-3 text-red-400" />
               <span>{study.likes}</span>
-            </div>
+            </motion.div>
           </div>
         </div>
 
         {/* Content */}
-        <div className="p-6">
-          <div className="flex items-start justify-between mb-3">
+        <div className="p-6 flex-1 flex flex-col">
+          <div className="flex items-start justify-between mb-4">
             <div>
               <motion.h3
-                className="text-xl font-bold text-gray-800 group-hover:text-[#fd5001] transition-colors duration-300 mb-1"
+                className="text-xl font-bold text-gray-800 group-hover:text-[#fd5001] transition-colors duration-300 mb-1 leading-tight"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isMounted ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.1 + 0.2 }}
               >
                 {study.title}
               </motion.h3>
-              <motion.p
-                className="text-sm text-gray-500"
+              <motion.div
+                className="flex items-center gap-2 text-sm text-gray-500 mb-3"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isMounted ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.1 + 0.3 }}
               >
-                {study.category} • {study.year}
-              </motion.p>
+                <span className="px-2 py-1 bg-[#fd5001]/10 text-[#fd5001] rounded-full text-xs font-medium">
+                  {study.category}
+                </span>
+                <span>•</span>
+                <span>{study.year}</span>
+              </motion.div>
             </div>
           </div>
 
           <motion.p
-            className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-2"
+            className="text-gray-600 text-sm mb-4 leading-relaxed flex-1"
             initial={{ opacity: 0, y: 20 }}
             animate={isMounted ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: index * 0.1 + 0.4 }}
+            style={{
+              display: "-webkit-box",
+              WebkitLineClamp: 3,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+            }}
           >
             {study.desc}
           </motion.p>
 
           {/* Tags */}
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 mt-auto">
             {study.tags.slice(0, 3).map((tag, tagIndex) => (
               <motion.span
                 key={tag}
-                className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
+                className="px-3 py-1.5 bg-gradient-to-r from-gray-100 to-gray-50 text-gray-700 text-xs rounded-full border border-gray-200 hover:border-[#fd5001]/30 hover:bg-gradient-to-r hover:from-[#fd5001]/10 hover:to-[#ff8c00]/10 transition-all duration-300 font-medium"
                 initial={{ scale: 0, opacity: 0 }}
                 animate={isMounted ? { scale: 1, opacity: 1 } : {}}
                 transition={{ delay: index * 0.1 + tagIndex * 0.05 + 0.3 }}
@@ -814,6 +843,16 @@ function CaseStudyCard({
                 {tag}
               </motion.span>
             ))}
+            {study.tags.length > 3 && (
+              <motion.span
+                className="px-3 py-1.5 bg-gradient-to-r from-[#fd5001]/10 to-[#ff8c00]/10 text-[#fd5001] text-xs rounded-full border border-[#fd5001]/20 font-medium"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={isMounted ? { scale: 1, opacity: 1 } : {}}
+                transition={{ delay: index * 0.1 + 0.6 }}
+              >
+                +{study.tags.length - 3} more
+              </motion.span>
+            )}
           </div>
         </div>
 
@@ -821,10 +860,13 @@ function CaseStudyCard({
         <motion.div
           className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#fd5001]/5 to-[#ff8c00]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           animate={{
-            scale: isHovered ? [1, 1.02, 1] : 1,
+            scale: isHovered ? [1, 1.01, 1] : 1,
           }}
-          transition={{ duration: 2, repeat: isHovered ? Infinity : 0 }}
+          transition={{ duration: 3, repeat: isHovered ? Infinity : 0 }}
         />
+
+        {/* Decorative Corner Accent */}
+        <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#fd5001]/10 to-transparent rounded-bl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </motion.div>
     </motion.div>
   );
@@ -869,31 +911,31 @@ function ProjectModal({ project, onClose }) {
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors duration-300"
+            className="absolute top-6 right-6 z-10 w-12 h-12 bg-white/25 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/40 transition-all duration-300 shadow-lg"
           >
-            <X className="w-5 h-5" />
+            <X className="w-6 h-6" />
           </button>
 
           {/* Image Slider */}
-          <div className="relative h-64 md:h-80">
+          <div className="relative h-72 md:h-96">
             <Image
               src={images[currentIndex]}
               alt={`${project.title} ${currentIndex + 1}`}
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
             {images.length > 1 && (
               <>
                 <button
                   onClick={prevImage}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 text-white p-2 rounded-full"
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/25 backdrop-blur-md text-white p-3 rounded-full hover:bg-white/40 transition-all duration-300 shadow-lg"
                 >
                   <ChevronLeft className="w-6 h-6" />
                 </button>
                 <button
                   onClick={nextImage}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 text-white p-2 rounded-full"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/25 backdrop-blur-md text-white p-3 rounded-full hover:bg-white/40 transition-all duration-300 shadow-lg"
                 >
                   <ChevronRight className="w-6 h-6" />
                 </button>
@@ -913,37 +955,20 @@ function ProjectModal({ project, onClose }) {
                 </p>
 
                 {/* Tabs */}
-                <div className="flex gap-4 mb-4">
-                  <button
-                    className={`px-4 py-2 ${
-                      selectedTab === "Overview"
-                        ? "bg-[#fd5001] text-white"
-                        : "bg-gray-200 text-gray-800"
-                    } rounded-lg`}
-                    onClick={() => setSelectedTab("Overview")}
-                  >
-                    Overview
-                  </button>
-                  <button
-                    className={`px-4 py-2 ${
-                      selectedTab === "Features"
-                        ? "bg-[#fd5001] text-white"
-                        : "bg-gray-200 text-gray-800"
-                    } rounded-lg`}
-                    onClick={() => setSelectedTab("Features")}
-                  >
-                    Features
-                  </button>
-                  <button
-                    className={`px-4 py-2 ${
-                      selectedTab === "Technology"
-                        ? "bg-[#fd5001] text-white"
-                        : "bg-gray-200 text-gray-800"
-                    } rounded-lg`}
-                    onClick={() => setSelectedTab("Technology")}
-                  >
-                    Technology
-                  </button>
+                <div className="flex gap-2 mb-6">
+                  {["Overview", "Features", "Technology"].map((tab) => (
+                    <button
+                      key={tab}
+                      className={`px-4 py-2.5 rounded-lg font-medium transition-all duration-300 ${
+                        selectedTab === tab
+                          ? "bg-gradient-to-r from-[#fd5001] to-[#ff8c00] text-white shadow-lg"
+                          : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-[#fd5001]"
+                      }`}
+                      onClick={() => setSelectedTab(tab)}
+                    >
+                      {tab}
+                    </button>
+                  ))}
                 </div>
 
                 {/* Tab Content */}
@@ -986,7 +1011,7 @@ function ProjectModal({ project, onClose }) {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-4">
+                {/* <div className="flex gap-4">
                   <a
                     href={project.live}
                     target="_blank"
@@ -998,11 +1023,11 @@ function ProjectModal({ project, onClose }) {
                   <button className="px-6 py-3 border border-gray-300 text-gray-600 rounded-lg hover:border-[#fd5001] hover:text-[#fd5001] transition-colors duration-300">
                     Case Study
                   </button>
-                </div>
+                </div> */}
               </div>
 
               {/* Project Meta */}
-              <div className="bg-gray-50 rounded-2xl p-6">
+              <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6 border border-gray-200">
                 <h3 className="font-bold text-gray-800 mb-4">
                   Project Details
                 </h3>

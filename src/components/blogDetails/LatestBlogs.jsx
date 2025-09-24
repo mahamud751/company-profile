@@ -75,7 +75,7 @@ export default function LatestBlogs({ blogs }) {
             animate={isMounted ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.3, delay: 0.3 }}
           >
-            Protoja Blog
+            Crazy Solve Blog
           </motion.h1>
           <motion.p
             className="text-sm sm:text-base mt-1"

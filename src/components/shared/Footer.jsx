@@ -108,13 +108,13 @@ export default function Footer() {
                 className="text-lg sm:text-xl hover:text-black text-white/80 transition-colors duration-200"
                 whileHover={{ x: 10 }}
               >
-                <a href="mailto:hey@protoja.studio">hey@protoja.studio</a>
+                <a href="mailto:crazysolve@gmail.com">crazysolve@gmail.com</a>
               </motion.p>
               <motion.p
                 className="text-lg sm:text-xl hover:text-black text-white/80 transition-colors duration-200"
                 whileHover={{ x: 10 }}
               >
-                <a href="tel:+14157966262">+1 415 796 6262</a>
+                <a href="tel:+8801603795302">+8801603795302</a>
               </motion.p>
             </div>
           </div>
@@ -167,19 +167,9 @@ export default function Footer() {
             >
               {[
                 {
-                  city: "San Francisco",
-                  address: "300 Broadway",
-                  state: "San Francisco, CA 94133",
-                },
-                {
-                  city: "New York",
-                  address: "148 Lafayette St",
-                  state: "New York, NY 10013",
-                },
-                {
-                  city: "Austin",
-                  address: "600 Congress Ave",
-                  state: "Austin, TX 78701",
+                  city: "Mirpur 10",
+                  address: "D Block",
+                  state: "Mirpur, Dhaka",
                 },
               ].map((office, index) => (
                 <motion.div
@@ -220,7 +210,7 @@ export default function Footer() {
 
           {/* Simple Legal Links */}
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-sm text-white/90 order-1 sm:order-2">
-            <p>© 2016 – {currentYear} Clay Global, LLC</p>
+            <p>© 2020 – {currentYear} Crazy Solve</p>
             {["Privacy", "Terms", "Sitemap"].map((item) => (
               <motion.div key={item} whileHover={{ x: 3 }}>
                 <Link

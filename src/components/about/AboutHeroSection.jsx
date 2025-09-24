@@ -244,7 +244,7 @@ export default function AboutHeroSection() {
                 backgroundClip: "text",
               }}
             >
-              Crafting Tomorrow's
+              Crazy Solve Tomorrow's
               <br />
               <span className="relative">
                 Digital Stories

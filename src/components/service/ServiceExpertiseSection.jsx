@@ -10,14 +10,14 @@ const expertise = [
     color: "from-[#FF6333] to-[#fd5001]",
     image: "https://i.ibb.co.com/ddkqnxX/expertise-ecommerce-2-11zon.jpg",
     details:
-      "Crafting frictionless and conversion-optimized shopping experiences for digital retailers.",
+      "Crazy Solve frictionless and conversion-optimized shopping experiences for digital retailers.",
   },
   {
     title: "Edu-Tech",
     color: "from-[#4B215C] to-[#A259FF]",
     image: "https://i.ibb.co.com/k6sTZPLW/expertise-edutech-3-11zon.jpg",
     details:
-      "Building engaging, accessible platforms that elevate the digital learning journey.",
+      "Crazy Solve building engaging, accessible platforms that elevate the digital learning journey.",
   },
   {
     title: "Fintech",

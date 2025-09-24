@@ -19,9 +19,10 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Protoja - The Ultimate UI/UX Design Agency for Visionary Brands.",
+  title:
+    "Crazy Solve  - The Ultimate UI/UX Design Agency for Visionary Brands.",
   description:
-    "Protoja is where visionary brands find their ultimate UI/UX design partner, delivering innovation, beauty, and results.",
+    "Crazy Solve is where visionary brands find their ultimate UI/UX design partner, delivering innovation, beauty, and results.",
 };
 
 export default function RootLayout({ children }) {
@@ -31,7 +32,10 @@ export default function RootLayout({ children }) {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-        <title>Protoja - The Ultimate UI/UX Design Agency for Visionary Brands.</title>
+        <link rel="icon" href="./favicon.ico" />
+        <title>
+          Crazy Solve - The Ultimate UI/UX Design Agency for Visionary Brands.
+        </title>
       </head>
       <body className="antialiased bg-white">
         <AppRouterCacheProvider options={{ prepend: true }}>

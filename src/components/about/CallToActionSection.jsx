@@ -17,13 +17,13 @@ export default function CallToActionSection() {
     {
       icon: <Mail size={24} />,
       title: "Email Us",
-      description: "hello@company.com",
+      description: "crazysolve@gmail.com",
       action: "Send Email",
     },
     {
       icon: <Phone size={24} />,
       title: "Call Us",
-      description: "+1 (555) 123-4567",
+      description: "+8801603795302",
       action: "Start Call",
     },
     {

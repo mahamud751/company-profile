@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -35,9 +35,9 @@ export default function Header() {
       onStart: () => {
         gsap.to(btnOverlayRef.current, {
           backgroundColor: "#d43e01",
-          duration: 0.4
+          duration: 0.4,
         });
-      }
+      },
     });
   };
 
@@ -49,30 +49,30 @@ export default function Header() {
       onComplete: () => {
         gsap.to(btnOverlayRef.current, {
           backgroundColor: "#fd5001",
-          duration: 0.1
+          duration: 0.1,
         });
-      }
+      },
     });
   };
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${scrolled
-        ? "backdrop-blur-md bg-white/80 border-b border-black/10 shadow-sm"
-        : "bg-transparent"
-        }`}
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+        scrolled
+          ? "backdrop-blur-md bg-white/80 border-b border-black/10 shadow-sm"
+          : "bg-transparent"
+      }`}
     >
       <nav className="container mx-auto px-4 md:px-8 h-16 flex items-center transition-all duration-300">
-
         <div
-          className={`flex w-full items-center transition-all duration-300 ${scrolled ? "justify-center" : "justify-between"
-            }`}
+          className={`flex w-full items-center transition-all duration-300 ${
+            scrolled ? "justify-center" : "justify-between"
+          }`}
         >
           <motion.div
-            className={`flex items-center ${scrolled
-              ? "gap-10"
-              : "w-full justify-between"
-              }`}
+            className={`flex items-center ${
+              scrolled ? "gap-10" : "w-full justify-between"
+            }`}
             animate={{
               x: 0,
               scale: scrolled ? 1.05 : 1,
@@ -87,11 +87,11 @@ export default function Header() {
               className="w-20 h-20 flex items-center justify-center shrink-0"
             >
               <Image
-                src="/assets/logo.svg"
+                src="/logo.png"
                 alt="Company logo"
-                width={80}
-                height={80}
-                className="object-contain"
+                width={1000}
+                height={200}
+                className="object-contain max-w-56"
                 priority
               />
             </Link>
@@ -106,10 +106,11 @@ export default function Header() {
                       setActive(name);
                       setMobileMenuOpen(false);
                     }}
-                    className={`px-3 py-1 rounded-full text-sm transition-all duration-150 flex items-center h-8 font-medium ${active === name
-                      ? "bg-orange-50 text-[#fd5001]"
-                      : "text-gray-700 hover:text-[#fd5001] hover:bg-orange-50"
-                      }`}
+                    className={`px-3 py-1 rounded-full text-sm transition-all duration-150 flex items-center h-8 font-medium ${
+                      active === name
+                        ? "bg-orange-50 text-[#fd5001]"
+                        : "text-gray-700 hover:text-[#fd5001] hover:bg-orange-50"
+                    }`}
                   >
                     {name}
                   </Link>
@@ -177,16 +178,16 @@ export default function Header() {
                       setActive(name);
                       setMobileMenuOpen(false);
                     }}
-                    className={`block text-center font-medium px-3 py-3 rounded-md transition-colors duration-150 w-full ${active === name
-                      ? "bg-[#fd5001] text-white"
-                      : "text-gray-700 hover:bg-orange-50 hover:text-[#fd5001]"
-                      }`}
+                    className={`block text-center font-medium px-3 py-3 rounded-md transition-colors duration-150 w-full ${
+                      active === name
+                        ? "bg-[#fd5001] text-white"
+                        : "text-gray-700 hover:bg-orange-50 hover:text-[#fd5001]"
+                    }`}
                   >
                     {name}
                   </Link>
                 </li>
               ))}
-
             </ul>
           </motion.div>
         )}

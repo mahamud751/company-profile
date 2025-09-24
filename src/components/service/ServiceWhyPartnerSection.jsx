@@ -121,7 +121,7 @@ export default function ServiceWhyPartnerSection() {
               }}
               transition={{ duration: 6, repeat: Infinity }}
             >
-              WHY{"\n"}PARTNER{"\n"}WITH{"\n"}MUSEMIND?
+              WHY{"\n"}PARTNER{"\n"}WITH{"\n"}Crazy Solve?
             </motion.h2>
           </div>
         </motion.div>

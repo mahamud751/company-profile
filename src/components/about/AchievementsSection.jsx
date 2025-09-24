@@ -18,7 +18,7 @@ const achievements = [
     icon: <Briefcase size={40} className="text-[#fd5001] mb-4" />,
     count: 10,
     suffix: "+",
-    desc: "Years of Crafting Digital Experiences",
+    desc: "Years of Crazy Solve Digital Experiences",
     gradient: "from-blue-500 to-cyan-500",
     bgGradient: "from-blue-500/10 to-cyan-500/10",
   },
