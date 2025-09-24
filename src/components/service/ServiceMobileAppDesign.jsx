@@ -292,7 +292,7 @@ export default function ServiceMobileAppDesign() {
             />
 
             <Image
-              src="/service-mobile-app-design.jpg"
+              src="https://i.ibb.co.com/jv66hShj/service-mobile-app-design-2-11zon.webp"
               alt="Mobile App Design Showcase"
               fill
               className="object-cover h-full"

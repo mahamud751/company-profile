@@ -2,6 +2,10 @@ import Image from "next/image";
 import grainImage from "@/assets/images/grain.jpg";
 import { BadgeCheck } from "lucide-react";
 
+
+
+
+
 const expertiseFields = [
   {
     labels: ["UI/UX", "Web Design"],
@@ -17,7 +21,7 @@ const expertiseFields = [
       description:
         "Every interface is crafted with empathy and usability at the core.",
     },
-    image: "/assets/expertise-fields/ui-ux-design.jpg",
+    image: "https://i.ibb.co.com/WpK0X7nY/ui-ux-design-3-11zon.webp",
   },
   {
     labels: ["SaaS", "Dashboard UI"],
@@ -33,7 +37,7 @@ const expertiseFields = [
       description:
         "Designed to grow with your product — from MVP to enterprise scale.",
     },
-    image: "/assets/expertise-fields/saas-design.jpg",
+    image: "https://i.ibb.co.com/jv3rfcT1/saas-design-2-11zon.webp",
   },
   {
     labels: ["Next.js", "Mobile Responsive"],
@@ -49,7 +53,7 @@ const expertiseFields = [
       description:
         "Optimized for mobile gestures, fast feedback, and offline support.",
     },
-    image: "/assets/expertise-fields/mobile-app-design.jpg",
+    image: "https://i.ibb.co.com/S488gHnr/mobile-app-design-1-11zon.webp",
   },
   {
     labels: ["React", "Frontend Dev"],
@@ -65,7 +69,7 @@ const expertiseFields = [
       description:
         "Built with clean code, fast loads, and discoverability in mind.",
     },
-    image: "/assets/expertise-fields/website-development.jpg",
+    image: "https://i.ibb.co.com/C5LxqXmS/website-development-5-11zon.webp",
   },
   {
     labels: ["Web App", "Interactive UI"],
@@ -80,7 +84,7 @@ const expertiseFields = [
       title: "User-Centric Functionality",
       description: "Designed for clarity, security, and high efficiency.",
     },
-    image: "/assets/expertise-fields/web-app-design.jpg",
+    image: "https://i.ibb.co.com/HpMM9gzK/web-app-design-4-11zon.webp",
   },
 ];
 

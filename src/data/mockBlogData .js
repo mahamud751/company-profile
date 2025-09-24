@@ -5,7 +5,7 @@ const mockBlogData = [
     desc: "A look into how AI is shaping our world.",
     author: "John Doe",
     createdAt: "2024-12-01T12:00:00Z",
-    photos: ["/images/blog1.avif"],
+    photos: ["https://i.ibb.co.com/Y472ySfD/blog1.webp"],
     type: "technology",
     contents: [
       {
@@ -24,7 +24,7 @@ const mockBlogData = [
 <p>Healthcare is one area where AI's impact is particularly profound. Tools powered by AI are aiding in diagnosing diseases like cancer, predicting outbreaks, and personalizing treatment plans. AI-driven robots assist in surgeries with precision that reduces recovery time and improves outcomes.</p>
 
 <p>In business, AI helps streamline operations by automating routine tasks such as customer support, scheduling, and data entry. Predictive analytics offer strategic insights that drive decision-making and enhance productivity. AI is not just about replacing jobs—it's about augmenting human capabilities to do more, faster, and better.</p>`,
-        images: ["/images/ai.jpg", "/images/ai2.jpg"],
+        images: ["https://i.ibb.co.com/1GYfV8qL/ai.webp", "https://i.ibb.co.com/G3pc25mj/ai2.webp"],
       },
       {
         title: "Challenges and Ethical Considerations",
@@ -52,7 +52,7 @@ const mockBlogData = [
     desc: "The latest trends and predictions in UI/UX design.",
     author: "Jane Smith",
     createdAt: "2025-01-15T09:30:00Z",
-    photos: ["/images/blog2.avif"],
+    photos: ["https://i.ibb.co.com/JwQBzkD8/blog2.webp"],
     type: "design",
     contents: [
       {
@@ -71,7 +71,7 @@ const mockBlogData = [
 <p>Healthcare is one area where AI's impact is particularly profound. Tools powered by AI are aiding in diagnosing diseases like cancer, predicting outbreaks, and personalizing treatment plans. AI-driven robots assist in surgeries with precision that reduces recovery time and improves outcomes.</p>
 
 <p>In business, AI helps streamline operations by automating routine tasks such as customer support, scheduling, and data entry. Predictive analytics offer strategic insights that drive decision-making and enhance productivity. AI is not just about replacing jobs—it's about augmenting human capabilities to do more, faster, and better.</p>`,
-        images: ["/images/ai.jpg", "/images/ai2.jpg"],
+        images: ["https://i.ibb.co.com/1GYfV8qL/ai.webp", "https://i.ibb.co.com/G3pc25mj/ai2.webp"],
       },
       {
         title: "Challenges and Ethical Considerations",
@@ -99,7 +99,7 @@ const mockBlogData = [
     desc: "How modern apps help streamline your workflow.",
     author: "Alex Johnson",
     createdAt: "2025-02-05T08:00:00Z",
-    photos: ["/images/blog3.avif"],
+    photos: ["https://i.ibb.co.com/zT6McVfJ/blog3.webp"],
     type: "productivity",
     contents: [
       {
@@ -118,7 +118,7 @@ const mockBlogData = [
 <p>Healthcare is one area where AI's impact is particularly profound. Tools powered by AI are aiding in diagnosing diseases like cancer, predicting outbreaks, and personalizing treatment plans. AI-driven robots assist in surgeries with precision that reduces recovery time and improves outcomes.</p>
 
 <p>In business, AI helps streamline operations by automating routine tasks such as customer support, scheduling, and data entry. Predictive analytics offer strategic insights that drive decision-making and enhance productivity. AI is not just about replacing jobs—it's about augmenting human capabilities to do more, faster, and better.</p>`,
-        images: ["/images/ai.jpg", "/images/ai2.jpg"],
+        images: ["https://i.ibb.co.com/1GYfV8qL/ai.webp", "https://i.ibb.co.com/G3pc25mj/ai2.webp"],
       },
       {
         title: "Challenges and Ethical Considerations",
@@ -146,7 +146,7 @@ const mockBlogData = [
     desc: "Simple ways to live more sustainably.",
     author: "Sarah Lee",
     createdAt: "2025-03-01T15:20:00Z",
-    photos: ["/images/blog4.avif"],
+    photos: ["https://i.ibb.co.com/Sw7p09Hr/blog4.webp"],
     type: "lifestyle",
     contents: [
       {
@@ -165,7 +165,7 @@ const mockBlogData = [
 <p>Healthcare is one area where AI's impact is particularly profound. Tools powered by AI are aiding in diagnosing diseases like cancer, predicting outbreaks, and personalizing treatment plans. AI-driven robots assist in surgeries with precision that reduces recovery time and improves outcomes.</p>
 
 <p>In business, AI helps streamline operations by automating routine tasks such as customer support, scheduling, and data entry. Predictive analytics offer strategic insights that drive decision-making and enhance productivity. AI is not just about replacing jobs—it's about augmenting human capabilities to do more, faster, and better.</p>`,
-        images: ["/images/ai.jpg", "/images/ai2.jpg"],
+        images: ["https://i.ibb.co.com/1GYfV8qL/ai.webp", "https://i.ibb.co.com/G3pc25mj/ai2.webp"],
       },
       {
         title: "Challenges and Ethical Considerations",
@@ -193,7 +193,7 @@ const mockBlogData = [
     desc: "Why remote work is here to stay.",
     author: "Tom Blake",
     createdAt: "2025-03-22T11:00:00Z",
-    photos: ["/images/blog5.avif"],
+    photos: ["https://i.ibb.co.com/gMBQSTM4/blog5.webp"],
     type: "business",
     contents: [
       {
@@ -212,7 +212,7 @@ const mockBlogData = [
 <p>Healthcare is one area where AI's impact is particularly profound. Tools powered by AI are aiding in diagnosing diseases like cancer, predicting outbreaks, and personalizing treatment plans. AI-driven robots assist in surgeries with precision that reduces recovery time and improves outcomes.</p>
 
 <p>In business, AI helps streamline operations by automating routine tasks such as customer support, scheduling, and data entry. Predictive analytics offer strategic insights that drive decision-making and enhance productivity. AI is not just about replacing jobs—it's about augmenting human capabilities to do more, faster, and better.</p>`,
-        images: ["/images/ai.jpg", "/images/ai2.jpg"],
+        images: ["https://i.ibb.co.com/1GYfV8qL/ai.webp", "https://i.ibb.co.com/G3pc25mj/ai2.webp"],
       },
       {
         title: "Challenges and Ethical Considerations",
@@ -240,7 +240,7 @@ const mockBlogData = [
     desc: "A complete guide to staying up-to-date with React.",
     author: "Emily Davis",
     createdAt: "2025-02-28T14:45:00Z",
-    photos: ["/images/blog6.avif"],
+    photos: ["https://i.ibb.co.com/yFrsqsHF/blog6.webp"],
     type: "technology",
     contents: [
       {
@@ -259,7 +259,7 @@ const mockBlogData = [
 <p>Healthcare is one area where AI's impact is particularly profound. Tools powered by AI are aiding in diagnosing diseases like cancer, predicting outbreaks, and personalizing treatment plans. AI-driven robots assist in surgeries with precision that reduces recovery time and improves outcomes.</p>
 
 <p>In business, AI helps streamline operations by automating routine tasks such as customer support, scheduling, and data entry. Predictive analytics offer strategic insights that drive decision-making and enhance productivity. AI is not just about replacing jobs—it's about augmenting human capabilities to do more, faster, and better.</p>`,
-        images: ["/images/ai.jpg", "/images/ai2.jpg"],
+        images: ["https://i.ibb.co.com/1GYfV8qL/ai.webp", "https://i.ibb.co.com/G3pc25mj/ai2.webp"],
       },
       {
         title: "Challenges and Ethical Considerations",
@@ -287,7 +287,7 @@ const mockBlogData = [
     desc: "Clean design and why it works so well.",
     author: "Michael Scott",
     createdAt: "2025-01-05T10:15:00Z",
-    photos: ["/images/blog7.avif"],
+    photos: ["https://i.ibb.co.com/zhTVLjtG/blog7.webp"],
     type: "design",
     contents: [
       {
@@ -306,7 +306,7 @@ const mockBlogData = [
 <p>Healthcare is one area where AI's impact is particularly profound. Tools powered by AI are aiding in diagnosing diseases like cancer, predicting outbreaks, and personalizing treatment plans. AI-driven robots assist in surgeries with precision that reduces recovery time and improves outcomes.</p>
 
 <p>In business, AI helps streamline operations by automating routine tasks such as customer support, scheduling, and data entry. Predictive analytics offer strategic insights that drive decision-making and enhance productivity. AI is not just about replacing jobs—it's about augmenting human capabilities to do more, faster, and better.</p>`,
-        images: ["/images/ai.jpg", "/images/ai2.jpg"],
+        images: ["https://i.ibb.co.com/1GYfV8qL/ai.webp", "https://i.ibb.co.com/G3pc25mj/ai2.webp"],
       },
       {
         title: "Challenges and Ethical Considerations",
@@ -334,7 +334,7 @@ const mockBlogData = [
     desc: "Tips to manage time effectively while coding.",
     author: "Laura White",
     createdAt: "2025-03-10T13:30:00Z",
-    photos: ["/images/blog8.avif"],
+    photos: ["https://i.ibb.co.com/PZZpQmwF/blog8.webp"],
     type: "productivity",
     contents: [
       {
@@ -353,7 +353,7 @@ const mockBlogData = [
 <p>Healthcare is one area where AI's impact is particularly profound. Tools powered by AI are aiding in diagnosing diseases like cancer, predicting outbreaks, and personalizing treatment plans. AI-driven robots assist in surgeries with precision that reduces recovery time and improves outcomes.</p>
 
 <p>In business, AI helps streamline operations by automating routine tasks such as customer support, scheduling, and data entry. Predictive analytics offer strategic insights that drive decision-making and enhance productivity. AI is not just about replacing jobs—it's about augmenting human capabilities to do more, faster, and better.</p>`,
-        images: ["/images/ai.jpg", "/images/ai2.jpg"],
+        images: ["https://i.ibb.co.com/1GYfV8qL/ai.webp", "https://i.ibb.co.com/G3pc25mj/ai2.webp"],
       },
       {
         title: "Challenges and Ethical Considerations",
@@ -381,7 +381,7 @@ const mockBlogData = [
     desc: "How tech is solving environmental challenges.",
     author: "Nathan Green",
     createdAt: "2025-02-12T08:10:00Z",
-    photos: ["/images/blog9.avif"],
+    photos: ["https://i.ibb.co.com/TxG7h3L8/blog9.webp"],
     type: "lifestyle",
     contents: [
       {
@@ -400,7 +400,7 @@ const mockBlogData = [
 <p>Healthcare is one area where AI's impact is particularly profound. Tools powered by AI are aiding in diagnosing diseases like cancer, predicting outbreaks, and personalizing treatment plans. AI-driven robots assist in surgeries with precision that reduces recovery time and improves outcomes.</p>
 
 <p>In business, AI helps streamline operations by automating routine tasks such as customer support, scheduling, and data entry. Predictive analytics offer strategic insights that drive decision-making and enhance productivity. AI is not just about replacing jobs—it's about augmenting human capabilities to do more, faster, and better.</p>`,
-        images: ["/images/ai.jpg", "/images/ai2.jpg"],
+        images: ["https://i.ibb.co.com/1GYfV8qL/ai.webp", "https://i.ibb.co.com/G3pc25mj/ai2.webp"],
       },
       {
         title: "Challenges and Ethical Considerations",
@@ -428,7 +428,7 @@ const mockBlogData = [
     desc: "Starting a business online has never been easier.",
     author: "Olivia Brown",
     createdAt: "2025-03-25T17:50:00Z",
-    photos: ["/images/blog10.avif"],
+    photos: ["https://i.ibb.co.com/qKkWthj/blog10.webp"],
     type: "business",
     contents: [
       {
@@ -447,7 +447,7 @@ const mockBlogData = [
 <p>Healthcare is one area where AI's impact is particularly profound. Tools powered by AI are aiding in diagnosing diseases like cancer, predicting outbreaks, and personalizing treatment plans. AI-driven robots assist in surgeries with precision that reduces recovery time and improves outcomes.</p>
 
 <p>In business, AI helps streamline operations by automating routine tasks such as customer support, scheduling, and data entry. Predictive analytics offer strategic insights that drive decision-making and enhance productivity. AI is not just about replacing jobs—it's about augmenting human capabilities to do more, faster, and better.</p>`,
-        images: ["/images/ai.jpg", "/images/ai2.jpg"],
+        images: ["https://i.ibb.co.com/1GYfV8qL/ai.webp", "https://i.ibb.co.com/G3pc25mj/ai2.webp"],
       },
       {
         title: "Challenges and Ethical Considerations",
@@ -475,7 +475,7 @@ const mockBlogData = [
     desc: "Improve performance and maintainability with these tips.",
     author: "Samuel Lee",
     createdAt: "2025-01-20T19:00:00Z",
-    photos: ["/images/blog11.avif"],
+    photos: ["https://i.ibb.co.com/BHD61XpC/blog11.webp"],
     type: "technology",
     contents: [
       {
@@ -494,7 +494,7 @@ const mockBlogData = [
 <p>Healthcare is one area where AI's impact is particularly profound. Tools powered by AI are aiding in diagnosing diseases like cancer, predicting outbreaks, and personalizing treatment plans. AI-driven robots assist in surgeries with precision that reduces recovery time and improves outcomes.</p>
 
 <p>In business, AI helps streamline operations by automating routine tasks such as customer support, scheduling, and data entry. Predictive analytics offer strategic insights that drive decision-making and enhance productivity. AI is not just about replacing jobs—it's about augmenting human capabilities to do more, faster, and better.</p>`,
-        images: ["/images/ai.jpg", "/images/ai2.jpg"],
+        images: ["https://i.ibb.co.com/1GYfV8qL/ai.webp", "https://i.ibb.co.com/G3pc25mj/ai2.webp"],
       },
       {
         title: "Challenges and Ethical Considerations",
@@ -522,7 +522,7 @@ const mockBlogData = [
     desc: "Enhance user experience through thoughtful motion.",
     author: "Rachel Kim",
     createdAt: "2025-02-07T07:45:00Z",
-    photos: ["/images/blog12.avif"],
+    photos: ["https://i.ibb.co.com/RGrmxL6J/blog12.webp"],
     type: "design",
     contents: [
       {
@@ -541,7 +541,7 @@ const mockBlogData = [
 <p>Healthcare is one area where AI's impact is particularly profound. Tools powered by AI are aiding in diagnosing diseases like cancer, predicting outbreaks, and personalizing treatment plans. AI-driven robots assist in surgeries with precision that reduces recovery time and improves outcomes.</p>
 
 <p>In business, AI helps streamline operations by automating routine tasks such as customer support, scheduling, and data entry. Predictive analytics offer strategic insights that drive decision-making and enhance productivity. AI is not just about replacing jobs—it's about augmenting human capabilities to do more, faster, and better.</p>`,
-        images: ["/images/ai.jpg", "/images/ai2.jpg"],
+        images: ["https://i.ibb.co.com/1GYfV8qL/ai.webp", "https://i.ibb.co.com/G3pc25mj/ai2.webp"],
       },
       {
         title: "Challenges and Ethical Considerations",

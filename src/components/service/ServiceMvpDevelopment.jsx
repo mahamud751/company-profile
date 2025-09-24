@@ -88,7 +88,7 @@ export default function ServiceMvpDevelopment() {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <Image
-              src="/service-mvp-development.jpg"
+              src="https://i.ibb.co.com/Fq0RLbY0/service-mvp-development-3-11zon.webp"
               alt="MVP Development Showcase"
               fill
               className="object-cover h-full"
@@ -96,7 +96,6 @@ export default function ServiceMvpDevelopment() {
             />
           </motion.div>
         </motion.div>
-
         {/* Right: Content */}
         <motion.div
           className="md:w-1/2 w-full flex flex-col justify-center"

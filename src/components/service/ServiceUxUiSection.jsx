@@ -163,7 +163,7 @@ export default function ServiceUxUiSection() {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <Image
-              src="/service-ui-ux-design.jpg"
+              src="https://i.ibb.co.com/h1mtGn3k/service-ui-ux-design-5-11zon.webp"
               alt="UX UI Design Showcase"
               fill
               className="object-cover h-full"

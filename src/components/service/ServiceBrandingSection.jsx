@@ -140,9 +140,8 @@ export default function ServiceBrandingSection() {
                 delay: 0.5,
               }}
             />
-
             <Image
-              src="/service-branding-image.jpg"
+              src="https://i.ibb.co.com/67FBJ8X6/service-branding-image-1-11zon.webp"
               alt="Brand Identity Visual"
               fill
               className="object-cover h-full"

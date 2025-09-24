@@ -92,7 +92,7 @@ export default function ServiceWebDesignSection() {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <Image
-              src="/service-web-design.jpg"
+              src="https://i.ibb.co.com/5HbBLz9/service-web-design-6-11zon.webp"
               alt="Web Design Showcase"
               fill
               className="object-cover h-full"

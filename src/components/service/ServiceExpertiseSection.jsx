@@ -8,42 +8,42 @@ const expertise = [
   {
     title: "E-Commerce",
     color: "from-[#FF6333] to-[#fd5001]",
-    image: "/expertise-ecommerce.jpg",
+    image: "https://i.ibb.co.com/ddkqnxX/expertise-ecommerce-2-11zon.jpg",
     details:
       "Crafting frictionless and conversion-optimized shopping experiences for digital retailers.",
   },
   {
     title: "Edu-Tech",
     color: "from-[#4B215C] to-[#A259FF]",
-    image: "/expertise-edutech.jpg",
+    image: "https://i.ibb.co.com/k6sTZPLW/expertise-edutech-3-11zon.jpg",
     details:
       "Building engaging, accessible platforms that elevate the digital learning journey.",
   },
   {
     title: "Fintech",
     color: "from-[#E6FF3F] to-[#24E6FF]",
-    image: "/expertise-fintech.jpg",
+    image: "https://i.ibb.co.com/SDjrTR9X/expertise-fintech-4-11zon.jpg",
     details:
       "Designing secure, intuitive interfaces for modern financial services and banking apps.",
   },
   {
     title: "Corporate",
     color: "from-[#A259FF] to-[#4B215C]",
-    image: "/expertise-corporate.jpg",
+    image: "https://i.ibb.co.com/WNz1dkkM/expertise-corporate-1-11zon.jpg",
     details:
       "Developing enterprise-grade solutions that empower team collaboration and productivity.",
   },
   {
     title: "Health Tech",
     color: "from-[#F5AFFF] to-[#A259FF]",
-    image: "/expertise-healthtech.jpg",
+    image: "https://i.ibb.co.com/xq8mMYth/expertise-healthtech-5-11zon.jpg",
     details:
       "Creating user-first healthcare tools for better diagnostics, care, and engagement.",
   },
   {
     title: "SaaS Application",
     color: "from-[#24E6FF] to-[#E6FF3F]",
-    image: "/expertise-saas.jpg",
+    image: "https://i.ibb.co.com/xqnnMNMD/expertise-saas-6-11zon.jpg",
     details:
       "Delivering scalable, UX-focused SaaS products for startups and enterprises alike.",
   },

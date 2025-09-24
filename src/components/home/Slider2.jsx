@@ -1,13 +1,13 @@
 import React from "react";
 
 const slideList = [
-  { id: 1, img: '/assets/slider2/car-mobile.png' },
-  { id: 2, img: '/assets/slider2/fashion-mobile-home.png' },
-  { id: 3, img: '/assets/slider2/travel-homepage.png' },
-  { id: 4, img: '/assets/slider2/gym-homepage-2.png' },
-  { id: 5, img: '/assets/slider2/food-homepage.png' },
-  { id: 6, img: '/assets/slider2/fashion-homepage.png' },
-  { id: 7, img: '/assets/slider2/stock-homepage.png' },
+  { id: 1, img: 'https://i.ibb.co.com/3YfYM8RL/car-mobile.webp' },
+  { id: 2, img: 'https://i.ibb.co.com/d4r5HXsN/fashion-mobile-home.webp' },
+  { id: 3, img: 'https://i.ibb.co.com/BHWwKxw4/travel-homepage.webp' },
+  { id: 4, img: 'https://i.ibb.co.com/tPvj57x4/gym-homepage-2.webp' },
+  { id: 5, img: 'https://i.ibb.co.com/0p1vZh8Z/food-homepage.webp' },
+  { id: 6, img: 'https://i.ibb.co.com/JwVc6cYv/fashion-homepage.webp' },
+  { id: 7, img: 'https://i.ibb.co.com/yJMyhwP/stock-homepage.webp' },
 ];
 
 const Slider2 = () => {

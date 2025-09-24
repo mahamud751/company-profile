@@ -251,7 +251,7 @@ export default function ServiceHeroSection() {
             />
 
             <Image
-              src="/service-product-design.jpg"
+              src="https://i.ibb.co.com/LXf0PX05/service-product-design-4-11zon.webp"
               alt="Product Design Service"
               width={500}
               height={400}

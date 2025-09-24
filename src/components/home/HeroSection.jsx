@@ -35,13 +35,13 @@ export default function HeroSection() {
 
   // Enhanced image array for rotating display
   const heroImages = [
-    "/assets/banner.png",
-    "/assets/service/website-development.jpg",
-    "/assets/service/web-app-design.jpg",
-    "/assets/scrool/4.png",
-    "/assets/scrool/1.png",
+    "https://i.ibb.co.com/2YthhKSQ/banner.webp",
+    "https://i.ibb.co.com/h1mtGn3k/service-ui-ux-design-5-11zon.webp",
+    "https://i.ibb.co.com/5HbBLz9/service-web-design-6-11zon.webp",
+    "https://i.ibb.co.com/9HJrcDZf/4.webp",
+    "https://i.ibb.co.com/3y1vGBcP/1.webp",
   ];
-
+  
   const logos = [
     {
       id: 1,

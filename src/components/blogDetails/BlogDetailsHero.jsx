@@ -71,7 +71,7 @@ export default function BlogDetailsHero({ blogMain }) {
           >
             <div className="relative">
               <Image
-                src="/images/avatar.jpg"
+                src="https://i.ibb.co.com/TB7048t9/avatar.webp"
                 width={48}
                 height={48}
                 className="rounded-full border-2 border-white shadow-lg"

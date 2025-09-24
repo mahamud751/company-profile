@@ -7,7 +7,7 @@ const team = [
   {
     name: "Jane Doe",
     role: "Founder & CEO",
-    img: "/about-team-member-01.jpg",
+    img: "https://i.ibb.co.com/qLZpMyym/about-team-member-01.jpg",
     bio: "Visionary leader with 15+ years in digital innovation and design strategy.",
     social: { linkedin: "#", twitter: "#" },
     skills: ["Strategy", "Leadership", "Innovation"],
@@ -15,7 +15,7 @@ const team = [
   {
     name: "John Smith",
     role: "Lead Designer",
-    img: "/about-team-member-02.jpg",
+    img: "https://i.ibb.co.com/2Yv5LD4c/about-team-member-02.jpg",
     bio: "Creative genius who transforms complex ideas into beautiful, intuitive designs.",
     social: { linkedin: "#", dribbble: "#" },
     skills: ["UI/UX", "Branding", "Prototyping"],
@@ -23,7 +23,7 @@ const team = [
   {
     name: "Alice Lee",
     role: "UX Researcher",
-    img: "/about-team-member-03.jpg",
+    img: "https://i.ibb.co.com/N2G5fVsN/about-team-member-03.jpg",
     bio: "User advocate who uncovers insights that drive meaningful design decisions.",
     social: { linkedin: "#", medium: "#" },
     skills: ["Research", "Analytics", "Testing"],
@@ -31,7 +31,7 @@ const team = [
   {
     name: "Mark Chan",
     role: "Frontend Engineer",
-    img: "/about-team-member-04.jpg",
+    img: "https://i.ibb.co.com/gbJb9t0k/about-team-member-04.jpg",
     bio: "Code craftsman who brings designs to life with pixel-perfect precision.",
     social: { linkedin: "#", github: "#" },
     skills: ["React", "TypeScript", "Animation"],
