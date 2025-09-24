@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import {
   X,
   ExternalLink,
@@ -887,12 +887,35 @@ function CaseStudyCard({
   variants,
   isMounted,
 }) {
+  const [isImageExpanded, setIsImageExpanded] = useState(false);
+  const imageRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    onHover(study.id);
+    setIsImageExpanded(true);
+    // Auto scroll to show the expanded image
+    setTimeout(() => {
+      if (imageRef.current) {
+        imageRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }
+    }, 100);
+  };
+
+  const handleMouseLeave = () => {
+    onHover(null);
+    setIsImageExpanded(false);
+  };
+
   return (
     <motion.div
+      ref={imageRef}
       className="group relative cursor-pointer"
       variants={variants}
-      onHoverStart={() => onHover(study.id)}
-      onHoverEnd={() => onHover(null)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       onClick={() => onSelect(study)}
       whileHover={{ y: -10 }}
     >
@@ -924,24 +947,68 @@ function CaseStudyCard({
         }}
       >
         {/* Image Container */}
-        <div className="relative overflow-hidden h-64">
+        <div
+          className={`relative overflow-hidden transition-all duration-700 ease-in-out ${
+            isImageExpanded ? "h-96" : "h-64"
+          }`}
+        >
           <motion.div
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.6 }}
-            className="w-full h-full"
+            className="w-full h-full relative"
+            animate={{
+              scale: isImageExpanded ? 1.02 : 1,
+            }}
+            transition={{ duration: 0.7, ease: "easeInOut" }}
           >
             <Image
               src={study.image}
               alt={study.title}
               width={400}
-              height={256}
-              className="w-full h-full object-cover"
+              height={384}
+              className={`w-full h-full transition-all duration-700 ease-in-out ${
+                isImageExpanded ? "object-contain bg-gray-100" : "object-cover"
+              }`}
               priority={index < 6}
             />
+            {/* Full Image Overlay */}
+            {isImageExpanded && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/20"
+              />
+            )}
           </motion.div>
 
           {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div
+            className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-opacity duration-300 ${
+              isImageExpanded
+                ? "opacity-30"
+                : "opacity-0 group-hover:opacity-100"
+            }`}
+          />
+
+          {/* Zoom Indicator */}
+          {!isImageExpanded && (
+            <motion.div
+              className="absolute top-4 right-4 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              whileHover={{ scale: 1.1 }}
+            >
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
+                />
+              </svg>
+            </motion.div>
+          )}
 
           {/* Hover Actions */}
           <motion.div
@@ -1087,6 +1154,7 @@ function ProjectModal({ project, onClose }) {
   ].filter(Boolean);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedTab, setSelectedTab] = useState("Overview");
+  const [isModalImageExpanded, setIsModalImageExpanded] = useState(false);
 
   const nextImage = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
@@ -1121,14 +1189,65 @@ function ProjectModal({ project, onClose }) {
           </button>
 
           {/* Image Slider */}
-          <div className="relative h-72 md:h-96">
-            <Image
-              src={images[currentIndex]}
-              alt={`${project.title} ${currentIndex + 1}`}
-              fill
-              className="object-cover"
+          <div
+            className={`relative transition-all duration-700 ease-in-out ${
+              isModalImageExpanded ? "h-96 md:h-[500px]" : "h-72 md:h-96"
+            }`}
+            onMouseEnter={() => setIsModalImageExpanded(true)}
+            onMouseLeave={() => setIsModalImageExpanded(false)}
+          >
+            <motion.div
+              className="w-full h-full relative"
+              animate={{
+                scale: isModalImageExpanded ? 1.02 : 1,
+              }}
+              transition={{ duration: 0.7, ease: "easeInOut" }}
+            >
+              <Image
+                src={images[currentIndex]}
+                alt={`${project.title} ${currentIndex + 1}`}
+                fill
+                className={`transition-all duration-700 ease-in-out ${
+                  isModalImageExpanded
+                    ? "object-contain bg-gray-100"
+                    : "object-cover"
+                }`}
+              />
+              {/* Enhanced overlay for expanded state */}
+              {isModalImageExpanded && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-black/10"
+                />
+              )}
+            </motion.div>
+            <div
+              className={`absolute inset-0 bg-gradient-to-t from-black/50 to-transparent transition-opacity duration-300 ${
+                isModalImageExpanded ? "opacity-20" : "opacity-100"
+              }`}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            {/* Zoom Indicator for Modal */}
+            {!isModalImageExpanded && (
+              <motion.div
+                className="absolute top-4 left-4 w-10 h-10 bg-white/25 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 hover:opacity-100 transition-opacity duration-300"
+                whileHover={{ scale: 1.1 }}
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
+                  />
+                </svg>
+              </motion.div>
+            )}
             {images.length > 1 && (
               <>
                 <button
@@ -1144,6 +1263,23 @@ function ProjectModal({ project, onClose }) {
                   <ChevronRight className="w-6 h-6" />
                 </button>
               </>
+            )}
+
+            {/* Image Indicators */}
+            {images.length > 1 && (
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                {images.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentIndex
+                        ? "bg-white scale-125"
+                        : "bg-white/50 hover:bg-white/75"
+                    }`}
+                  />
+                ))}
+              </div>
             )}
           </div>
 
