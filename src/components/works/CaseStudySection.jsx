@@ -279,7 +279,7 @@ export default function CaseStudySection() {
                   transition={{ duration: 0.8, delay: 1.4 }}
                 >
                   <Image
-                    src="/case-study-01.jpg"
+                    src="https://i.ibb.co.com/TXxBvzD/case-study-01.jpg"
                     alt="Featured Project"
                     width={600}
                     height={400}
