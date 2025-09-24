@@ -36,8 +36,8 @@ export default function HeroSection() {
   // Enhanced image array for rotating display
   const heroImages = [
     "https://i.ibb.co.com/2YthhKSQ/banner.webp",
-    "https://i.ibb.co.com/h1mtGn3k/service-ui-ux-design-5-11zon.webp",
-    "https://i.ibb.co.com/5HbBLz9/service-web-design-6-11zon.webp",
+    "https://i.ibb.co.com/MDWMWBdS/website-development.webp",
+    "https://i.ibb.co.com/60k9wmzC/web-app-design.webp",
     "https://i.ibb.co.com/9HJrcDZf/4.webp",
     "https://i.ibb.co.com/3y1vGBcP/1.webp",
   ];
