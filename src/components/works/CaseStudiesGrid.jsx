@@ -5,7 +5,6 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import {
   X,
   ExternalLink,
-  Play,
   Heart,
   Eye,
   ArrowRight,
@@ -826,7 +825,7 @@ export default function CaseStudiesGrid() {
 
         {/* Projects Grid */}
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch"
           variants={containerVariants}
           initial="hidden"
           animate={isMounted ? "visible" : "hidden"}
@@ -887,26 +886,14 @@ function CaseStudyCard({
   variants,
   isMounted,
 }) {
-  const [isImageExpanded, setIsImageExpanded] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(parseInt(study.likes));
   const imageRef = useRef(null);
 
-  const handleMouseEnter = () => {
-    onHover(study.id);
-    setIsImageExpanded(true);
-    // Auto scroll to show the expanded image
-    setTimeout(() => {
-      if (imageRef.current) {
-        imageRef.current.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-        });
-      }
-    }, 100);
-  };
-
-  const handleMouseLeave = () => {
-    onHover(null);
-    setIsImageExpanded(false);
+  const handleLike = (e) => {
+    e.stopPropagation();
+    setIsLiked(!isLiked);
+    setLikeCount((prev) => (isLiked ? prev - 1 : prev + 1));
   };
 
   return (
@@ -914,230 +901,133 @@ function CaseStudyCard({
       ref={imageRef}
       className="group relative cursor-pointer"
       variants={variants}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => onHover(study.id)}
+      onMouseLeave={() => onHover(null)}
       onClick={() => onSelect(study)}
-      whileHover={{ y: -10 }}
+      whileHover={{ y: -8, scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 300, damping: 25 }}
     >
-      {/* Featured Badge */}
-      {study.featured && (
-        <motion.div
-          className="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-[#fd5001] to-[#ff8c00] text-white px-4 py-2 rounded-full text-xs font-bold shadow-xl"
-          initial={{ scale: 0, rotate: -45 }}
-          animate={isMounted ? { scale: 1, rotate: 0 } : {}}
-          transition={{
-            delay: index * 0.1 + 0.5,
-            type: "spring",
-            stiffness: 200,
-          }}
-          whileHover={{ scale: 1.1, rotate: 5 }}
-        >
-          ✨ Featured
-        </motion.div>
-      )}
-
       {/* Main Card */}
       <motion.div
-        className="relative bg-white/90 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/30 h-full flex flex-col"
-        whileHover={{ scale: 1.02 }}
+        className="relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 h-full backdrop-blur-sm"
         style={{
           background: isHovered
-            ? "linear-gradient(135deg, rgba(253, 80, 1, 0.1), rgba(255, 140, 0, 0.1))"
-            : "rgba(255, 255, 255, 0.9)",
+            ? "linear-gradient(135deg, rgba(253, 80, 1, 0.05), rgba(255, 140, 0, 0.05), rgba(255, 255, 255, 0.95))"
+            : "rgba(255, 255, 255, 0.98)",
         }}
       >
-        {/* Image Container */}
-        <div
-          className={`relative overflow-hidden transition-all duration-700 ease-in-out ${
-            isImageExpanded ? "h-96" : "h-64"
-          }`}
-        >
-          <motion.div
-            className="w-full h-full relative"
-            animate={{
-              scale: isImageExpanded ? 1.02 : 1,
-            }}
-            transition={{ duration: 0.7, ease: "easeInOut" }}
-          >
-            <Image
-              src={study.image}
-              alt={study.title}
-              width={400}
-              height={384}
-              className={`w-full h-full transition-all duration-700 ease-in-out ${
-                isImageExpanded ? "object-contain bg-gray-100" : "object-cover"
-              }`}
-              priority={index < 6}
-            />
-            {/* Full Image Overlay */}
-            {isImageExpanded && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/20"
-              />
-            )}
-          </motion.div>
+        {/* Premium Gradient Border */}
+        <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#fd5001]/20 via-[#ff8c00]/10 to-[#fd5001]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
 
-          {/* Overlay */}
-          <div
-            className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-opacity duration-300 ${
-              isImageExpanded
-                ? "opacity-30"
-                : "opacity-0 group-hover:opacity-100"
-            }`}
+        {/* Image Container */}
+        <div className="relative overflow-hidden rounded-t-3xl h-72">
+          <Image
+            src={study.image}
+            alt={study.title}
+            width={400}
+            height={288}
+            className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+            priority={index < 6}
           />
 
-          {/* Zoom Indicator */}
-          {!isImageExpanded && (
-            <motion.div
-              className="absolute top-4 right-4 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              whileHover={{ scale: 1.1 }}
-            >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
-                />
-              </svg>
-            </motion.div>
-          )}
+          {/* Premium Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-          {/* Hover Actions */}
-          <motion.div
-            className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-          >
-            <motion.button
-              className="w-14 h-14 bg-white/25 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-[#fd5001] hover:scale-110 transition-all duration-300 shadow-lg"
-              whileHover={{ scale: 1.2, rotate: 5 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={(e) => {
-                e.stopPropagation();
-                onSelect(study);
-              }}
-            >
-              <Play className="w-6 h-6 ml-0.5" />
-            </motion.button>
-            <motion.a
-              href={study.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-14 h-14 bg-white/25 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-[#fd5001] hover:scale-110 transition-all duration-300 shadow-lg"
-              whileHover={{ scale: 1.2, rotate: -5 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <ExternalLink className="w-6 h-6" />
-            </motion.a>
-          </motion.div>
-
-          {/* Stats Overlay */}
-          <div className="absolute top-4 left-4 flex gap-2">
-            <motion.div
-              className="flex items-center gap-1 px-3 py-1.5 bg-black/40 backdrop-blur-md rounded-full text-white text-xs font-medium shadow-lg"
-              whileHover={{ scale: 1.05 }}
-            >
-              <Eye className="w-3 h-3" />
-              <span>{study.views}</span>
-            </motion.div>
-            <motion.div
-              className="flex items-center gap-1 px-3 py-1.5 bg-black/40 backdrop-blur-md rounded-full text-white text-xs font-medium shadow-lg"
-              whileHover={{ scale: 1.05 }}
-            >
-              <Heart className="w-3 h-3 text-red-400" />
-              <span>{study.likes}</span>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="p-6 flex-1 flex flex-col">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <motion.h3
-                className="text-xl font-bold text-gray-800 group-hover:text-[#fd5001] transition-colors duration-300 mb-1 leading-tight"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isMounted ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: index * 0.1 + 0.2 }}
-              >
-                {study.title}
-              </motion.h3>
-              <motion.div
-                className="flex items-center gap-2 text-sm text-gray-500 mb-3"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isMounted ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: index * 0.1 + 0.3 }}
-              >
-                <span className="px-2 py-1 bg-[#fd5001]/10 text-[#fd5001] rounded-full text-xs font-medium">
-                  {study.category}
-                </span>
-                <span>•</span>
-                <span>{study.year}</span>
-              </motion.div>
-            </div>
-          </div>
-
-          <motion.p
-            className="text-gray-600 text-sm mb-4 leading-relaxed flex-1"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isMounted ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: index * 0.1 + 0.4 }}
-            style={{
-              display: "-webkit-box",
-              WebkitLineClamp: 3,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
+          {/* Floating Like Button */}
+          <motion.button
+            className={`absolute top-4 right-4 w-11 h-11 rounded-full flex items-center justify-center backdrop-blur-lg transition-all duration-300 shadow-xl border border-white/20 ${
+              isLiked
+                ? "bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-red-500/25"
+                : "bg-white/90 text-gray-600 hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-500 hover:text-white hover:shadow-red-500/25"
+            }`}
+            whileHover={{ scale: 1.15, rotate: 5 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={handleLike}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{
+              delay: index * 0.1 + 0.3,
+              type: "spring",
+              stiffness: 400,
             }}
           >
-            {study.desc}
-          </motion.p>
+            <Heart className={`w-5 h-5 ${isLiked ? "fill-current" : ""}`} />
+          </motion.button>
 
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 mt-auto">
-            {study.tags.slice(0, 3).map((tag, tagIndex) => (
-              <motion.span
-                key={tag}
-                className="px-3 py-1.5 bg-gradient-to-r from-gray-100 to-gray-50 text-gray-700 text-xs rounded-full border border-gray-200 hover:border-[#fd5001]/30 hover:bg-gradient-to-r hover:from-[#fd5001]/10 hover:to-[#ff8c00]/10 transition-all duration-300 font-medium"
-                initial={{ scale: 0, opacity: 0 }}
-                animate={isMounted ? { scale: 1, opacity: 1 } : {}}
-                transition={{ delay: index * 0.1 + tagIndex * 0.05 + 0.3 }}
-              >
-                {tag}
-              </motion.span>
-            ))}
-            {study.tags.length > 3 && (
-              <motion.span
-                className="px-3 py-1.5 bg-gradient-to-r from-[#fd5001]/10 to-[#ff8c00]/10 text-[#fd5001] text-xs rounded-full border border-[#fd5001]/20 font-medium"
-                initial={{ scale: 0, opacity: 0 }}
-                animate={isMounted ? { scale: 1, opacity: 1 } : {}}
-                transition={{ delay: index * 0.1 + 0.6 }}
-              >
-                +{study.tags.length - 3} more
-              </motion.span>
-            )}
-          </div>
+          {/* Stylish Like Count */}
+          <motion.div
+            className="absolute top-4 left-4 flex items-center gap-2 px-3 py-2 bg-black/60 backdrop-blur-lg rounded-full text-white text-sm font-medium shadow-xl border border-white/10"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.1 + 0.4 }}
+          >
+            <Heart className="w-4 h-4 text-red-400 fill-current" />
+            <span className="font-semibold">{likeCount}</span>
+          </motion.div>
+
+          {/* Elegant Click Indicator */}
+          <motion.div
+            className="absolute bottom-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-lg rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg border border-white/20"
+            whileHover={{ scale: 1.2 }}
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 12a3 3 0 11-6 0 3 3 0 616 0z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+              />
+            </svg>
+          </motion.div>
+
+          {/* Premium Shimmer Effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out" />
         </div>
 
-        {/* Hover Glow Effect */}
-        <motion.div
-          className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#fd5001]/5 to-[#ff8c00]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          animate={{
-            scale: isHovered ? [1, 1.01, 1] : 1,
-          }}
-          transition={{ duration: 3, repeat: isHovered ? Infinity : 0 }}
-        />
+        {/* Elegant Bottom Section */}
+        <div className="p-4 bg-gradient-to-br from-white to-gray-50/50">
+          <motion.h3
+            className="text-lg font-bold text-gray-800 group-hover:text-[#fd5001] transition-colors duration-300 mb-1 leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isMounted ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: index * 0.1 + 0.2 }}
+          >
+            {study.title}
+          </motion.h3>
+          <motion.div
+            className="flex items-center justify-between"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isMounted ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: index * 0.1 + 0.3 }}
+          >
+            <span className="px-3 py-1 bg-gradient-to-r from-[#fd5001]/10 to-[#ff8c00]/10 text-[#fd5001] rounded-full text-xs font-semibold border border-[#fd5001]/20">
+              {study.category}
+            </span>
+            <span className="text-xs text-gray-500 font-medium">
+              {study.year}
+            </span>
+          </motion.div>
+        </div>
 
-        {/* Decorative Corner Accent */}
-        <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#fd5001]/10 to-transparent rounded-bl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        {/* Premium Glow Effect */}
+        <motion.div
+          className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#fd5001]/10 to-[#ff8c00]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10"
+          animate={{
+            scale: isHovered ? [1, 1.05, 1] : 1,
+          }}
+          transition={{ duration: 2, repeat: isHovered ? Infinity : 0 }}
+        />
       </motion.div>
     </motion.div>
   );
@@ -1153,8 +1043,8 @@ function ProjectModal({ project, onClose }) {
     project.img3,
   ].filter(Boolean);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedTab, setSelectedTab] = useState("Overview");
-  const [isModalImageExpanded, setIsModalImageExpanded] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(parseInt(project.likes));
 
   const nextImage = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
@@ -1164,10 +1054,15 @@ function ProjectModal({ project, onClose }) {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
+  const handleLike = () => {
+    setIsLiked(!isLiked);
+    setLikeCount((prev) => (isLiked ? prev - 1 : prev + 1));
+  };
+
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -1183,82 +1078,46 @@ function ProjectModal({ project, onClose }) {
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 z-10 w-12 h-12 bg-white/25 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/40 transition-all duration-300 shadow-lg"
+            className="absolute top-6 right-6 z-10 w-12 h-12 bg-gradient-to-r from-[#fd5001] to-[#ff8c00] backdrop-blur-md rounded-full flex items-center justify-center text-white hover:scale-110 transition-all duration-300 shadow-xl border border-white/20"
           >
             <X className="w-6 h-6" />
           </button>
 
-          {/* Image Slider */}
-          <div
-            className={`relative transition-all duration-700 ease-in-out ${
-              isModalImageExpanded ? "h-96 md:h-[500px]" : "h-72 md:h-96"
+          {/* Like Button */}
+          <motion.button
+            className={`absolute top-6 left-6 z-10 w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-lg transition-all duration-300 shadow-xl border border-white/20 ${
+              isLiked
+                ? "bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-red-500/25"
+                : "bg-white/90 text-gray-600 hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-500 hover:text-white hover:shadow-red-500/25"
             }`}
-            onMouseEnter={() => setIsModalImageExpanded(true)}
-            onMouseLeave={() => setIsModalImageExpanded(false)}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={handleLike}
           >
-            <motion.div
-              className="w-full h-full relative"
-              animate={{
-                scale: isModalImageExpanded ? 1.02 : 1,
-              }}
-              transition={{ duration: 0.7, ease: "easeInOut" }}
-            >
-              <Image
-                src={images[currentIndex]}
-                alt={`${project.title} ${currentIndex + 1}`}
-                fill
-                className={`transition-all duration-700 ease-in-out ${
-                  isModalImageExpanded
-                    ? "object-contain bg-gray-100"
-                    : "object-cover"
-                }`}
-              />
-              {/* Enhanced overlay for expanded state */}
-              {isModalImageExpanded && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-black/10"
-                />
-              )}
-            </motion.div>
-            <div
-              className={`absolute inset-0 bg-gradient-to-t from-black/50 to-transparent transition-opacity duration-300 ${
-                isModalImageExpanded ? "opacity-20" : "opacity-100"
-              }`}
+            <Heart className={`w-6 h-6 ${isLiked ? "fill-current" : ""}`} />
+          </motion.button>
+
+          {/* Image Container */}
+          <div className="relative h-[70vh]">
+            <Image
+              src={images[currentIndex]}
+              alt={`${project.title} ${currentIndex + 1}`}
+              fill
+              className="object-contain bg-gray-100"
             />
-            {/* Zoom Indicator for Modal */}
-            {!isModalImageExpanded && (
-              <motion.div
-                className="absolute top-4 left-4 w-10 h-10 bg-white/25 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 hover:opacity-100 transition-opacity duration-300"
-                whileHover={{ scale: 1.1 }}
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
-                  />
-                </svg>
-              </motion.div>
-            )}
+
+            {/* Navigation Buttons */}
             {images.length > 1 && (
               <>
                 <button
                   onClick={prevImage}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/25 backdrop-blur-md text-white p-3 rounded-full hover:bg-white/40 transition-all duration-300 shadow-lg"
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-[#fd5001] to-[#ff8c00] backdrop-blur-md text-white p-3 rounded-full hover:scale-110 transition-all duration-300 shadow-xl border border-white/20"
                 >
                   <ChevronLeft className="w-6 h-6" />
                 </button>
                 <button
                   onClick={nextImage}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/25 backdrop-blur-md text-white p-3 rounded-full hover:bg-white/40 transition-all duration-300 shadow-lg"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-[#fd5001] to-[#ff8c00] backdrop-blur-md text-white p-3 rounded-full hover:scale-110 transition-all duration-300 shadow-xl border border-white/20"
                 >
                   <ChevronRight className="w-6 h-6" />
                 </button>
@@ -1272,9 +1131,9 @@ function ProjectModal({ project, onClose }) {
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
                       index === currentIndex
-                        ? "bg-white scale-125"
+                        ? "bg-gradient-to-r from-[#fd5001] to-[#ff8c00] scale-125 shadow-lg"
                         : "bg-white/50 hover:bg-white/75"
                     }`}
                   />
@@ -1283,123 +1142,62 @@ function ProjectModal({ project, onClose }) {
             )}
           </div>
 
-          {/* Project Details */}
-          <div className="p-8">
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="md:col-span-2">
-                <h2 className="text-3xl font-bold text-gray-800 mb-2">
+          {/* Project Info */}
+          <div className="p-6 bg-gradient-to-r from-gray-50 to-white">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-800 mb-1">
                   {project.title}
                 </h2>
-                <p className="text-[#fd5001] font-medium mb-4">
-                  {project.category}
+                <p className="text-[#fd5001] font-medium text-sm">
+                  {project.category} • {project.year}
                 </p>
-
-                {/* Tabs */}
-                <div className="flex gap-2 mb-6">
-                  {["Overview", "Features", "Technology"].map((tab) => (
-                    <button
-                      key={tab}
-                      className={`px-4 py-2.5 rounded-lg font-medium transition-all duration-300 ${
-                        selectedTab === tab
-                          ? "bg-gradient-to-r from-[#fd5001] to-[#ff8c00] text-white shadow-lg"
-                          : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-[#fd5001]"
-                      }`}
-                      onClick={() => setSelectedTab(tab)}
-                    >
-                      {tab}
-                    </button>
-                  ))}
-                </div>
-
-                {/* Tab Content */}
-                {selectedTab === "Overview" && (
-                  <p className="text-gray-600 leading-relaxed mb-6">
-                    {project.fullDesc}
-                  </p>
-                )}
-                {selectedTab === "Features" && (
-                  <ul className="list-disc pl-5 text-gray-600 leading-relaxed mb-6">
-                    {project.description1 && <li>{project.description1}</li>}
-                    {project.description2 && <li>{project.description2}</li>}
-                    {project.description3 && <li>{project.description3}</li>}
-                    {project.description4 && <li>{project.description4}</li>}
-                  </ul>
-                )}
-                {selectedTab === "Technology" && (
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tags.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-gradient-to-r from-[#fd5001]/10 to-[#ff8c00]/10 text-[#fd5001] text-sm rounded-full border border-[#fd5001]/20"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.slice(0, 3).map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 bg-gradient-to-r from-[#fd5001]/10 to-[#ff8c00]/10 text-[#fd5001] text-sm rounded-full border border-[#fd5001]/20"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Action Buttons */}
-                {/* <div className="flex gap-4">
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-3 bg-[#fd5001] text-white rounded-lg hover:bg-[#ff8c00] transition-colors duration-300"
-                  >
-                    View Live Project
-                  </a>
-                  <button className="px-6 py-3 border border-gray-300 text-gray-600 rounded-lg hover:border-[#fd5001] hover:text-[#fd5001] transition-colors duration-300">
-                    Case Study
-                  </button>
-                </div> */}
               </div>
-
-              {/* Project Meta */}
-              <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6 border border-gray-200">
-                <h3 className="font-bold text-gray-800 mb-4">
-                  Project Details
-                </h3>
-                <div className="space-y-3 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">Client:</span>
-                    <span className="font-medium">{project.client}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">Duration:</span>
-                    <span className="font-medium">{project.duration}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">Team Size:</span>
-                    <span className="font-medium">{project.team}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">Year:</span>
-                    <span className="font-medium">{project.year}</span>
-                  </div>
-                  <div className="flex justify-between items-center pt-2 border-t">
-                    <div className="flex items-center gap-1 text-gray-500">
-                      <Eye className="w-4 h-4" />
-                      <span>{project.views}</span>
-                    </div>
-                    <div className="flex items-center gap-1 text-red-500">
-                      <Heart className="w-4 h-4" />
-                      <span>{project.likes}</span>
-                    </div>
-                  </div>
+              <div className="flex items-center gap-4 text-sm text-gray-600">
+                <div className="flex items-center gap-1">
+                  <Eye className="w-4 h-4" />
+                  <span>{project.views}</span>
+                </div>
+                <div className="flex items-center gap-1 text-red-500">
+                  <Heart className="w-4 h-4" />
+                  <span>{likeCount}</span>
                 </div>
               </div>
+            </div>
+
+            {/* Description */}
+            <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              {project.desc}
+            </p>
+
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2 mb-4">
+              {project.tags.slice(0, 5).map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 bg-gradient-to-r from-[#fd5001]/10 to-[#ff8c00]/10 text-[#fd5001] text-xs rounded-full border border-[#fd5001]/20 font-medium"
+                >
+                  {tag}
+                </span>
+              ))}
+              {project.tags.length > 5 && (
+                <span className="px-3 py-1 bg-gradient-to-r from-[#fd5001]/10 to-[#ff8c00]/10 text-[#fd5001] text-xs rounded-full border border-[#fd5001]/20 font-medium">
+                  +{project.tags.length - 5} more
+                </span>
+              )}
+            </div>
+
+            {/* Action Button */}
+            <div className="flex justify-center">
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#fd5001] to-[#ff8c00] text-white rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold shadow-lg"
+              >
+                <span>View Project</span>
+                <ExternalLink className="w-5 h-5" />
+              </a>
             </div>
           </div>
         </motion.div>
