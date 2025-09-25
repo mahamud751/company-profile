@@ -317,7 +317,7 @@ export default function HeroSection() {
             animate="animate"
           >
             <Award className="w-5 h-5" />
-            <span>Award-Winning Design Studio</span>
+            <span>Award-Winning Software Company</span>
             <motion.div
               className="w-3 h-3 bg-[#fd5001] rounded-full"
               animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
@@ -340,7 +340,7 @@ export default function HeroSection() {
                 }}
                 transition={{ duration: 4, repeat: Infinity }}
               >
-                Leading UI UX
+                Leading creative
               </motion.span>
               <motion.span
                 className="block text-gray-800/10"
@@ -349,9 +349,7 @@ export default function HeroSection() {
                   y: [0, 2, 0],
                 }}
                 transition={{ duration: 5, repeat: Infinity }}
-              >
-                Design Agency
-              </motion.span>
+              ></motion.span>
             </motion.div>
 
             {/* Main Text */}
@@ -375,7 +373,7 @@ export default function HeroSection() {
                   textShadow: "0 0 20px rgba(253, 80, 1, 0.5)",
                 }}
               >
-                {"Leading UI UX".split("").map((char, index) => (
+                {"Leading".split("").map((char, index) => (
                   <motion.span
                     key={index}
                     className="inline-block"
@@ -406,7 +404,7 @@ export default function HeroSection() {
                   textShadow: "0 0 20px rgba(107, 114, 128, 0.5)",
                 }}
               >
-                {"Design Agency".split("").map((char, index) => (
+                {"Software Company".split("").map((char, index) => (
                   <motion.span
                     key={index}
                     className="inline-block"
