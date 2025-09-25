@@ -4,7 +4,6 @@ import Link from "next/link";
 import {
   Facebook,
   Twitter,
-  Instagram,
   Linkedin,
   Home,
   Briefcase,
@@ -128,7 +127,7 @@ export default function Footer() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                {["Work", "Services", "Blog"].map((item, index) => (
+                {["Works", "Service", "Blog", "About"].map((item, index) => (
                   <motion.div key={item} whileHover={{ x: 5 }}>
                     <Link
                       href={`/${item.toLowerCase()}`}
@@ -140,49 +139,34 @@ export default function Footer() {
                 ))}
               </motion.div>
               <motion.div
-                className="space-y-4"
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
+                className=""
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
               >
-                {["Clients", "About", "Contact"].map((item, index) => (
-                  <motion.div key={item} whileHover={{ x: 5 }}>
-                    <Link
-                      href={`/${item.toLowerCase()}`}
-                      className="block text-base sm:text-lg hover:text-black transition-colors"
-                    >
-                      {item}
-                    </Link>
+                {[
+                  {
+                    city: "Mirpur 10",
+                    address: "D Block",
+                    state: "Mirpur, Dhaka",
+                  },
+                ].map((office, index) => (
+                  <motion.div
+                    key={office.city}
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <h3 className="font-semibold text-lg mb-2">
+                      {office.city}
+                    </h3>
+                    <p className="text-white/60">{office.address}</p>
+                    <p className="text-white/60">{office.state}</p>
                   </motion.div>
                 ))}
               </motion.div>
             </div>
 
             {/* Simple Offices */}
-            <motion.div
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              {[
-                {
-                  city: "Mirpur 10",
-                  address: "D Block",
-                  state: "Mirpur, Dhaka",
-                },
-              ].map((office, index) => (
-                <motion.div
-                  key={office.city}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <h3 className="font-semibold text-lg mb-2">{office.city}</h3>
-                  <p className="text-white/60">{office.address}</p>
-                  <p className="text-white/60">{office.state}</p>
-                </motion.div>
-              ))}
-            </motion.div>
           </div>
         </motion.div>
 
@@ -195,14 +179,35 @@ export default function Footer() {
         >
           {/* Simple Social Icons */}
           <nav className="flex gap-5 order-2 sm:order-1">
-            {[Facebook, Twitter, Instagram, Linkedin].map((Icon, index) => (
+            {[
+              {
+                icon: Facebook,
+                href: "https://www.facebook.com/crazysolve",
+                label: "Facebook",
+              },
+              {
+                icon: Twitter,
+                href: "https://twitter.com/crazysolve",
+                label: "Twitter",
+              },
+              {
+                icon: Linkedin,
+                href: "https://linkedin.com/company/crazysolve",
+                label: "LinkedIn",
+              },
+            ].map((social, index) => (
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.2, y: -3 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <Link href="#" aria-label={`Social ${index}`}>
-                  <Icon className="text-white hover:text-gray-300 transition-colors" />
+                <Link
+                  href={social.href}
+                  aria-label={social.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <social.icon className="text-white hover:text-gray-300 transition-colors" />
                 </Link>
               </motion.div>
             ))}
@@ -211,7 +216,7 @@ export default function Footer() {
           {/* Simple Legal Links */}
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-sm text-white/90 order-1 sm:order-2">
             <p>© 2020 – {currentYear} Crazy Solve</p>
-            {["Privacy", "Terms", "Sitemap"].map((item) => (
+            {/* {["Privacy", "Terms", "Sitemap"].map((item) => (
               <motion.div key={item} whileHover={{ x: 3 }}>
                 <Link
                   href={`/${item.toLowerCase()}`}
@@ -220,7 +225,7 @@ export default function Footer() {
                   {item}
                 </Link>
               </motion.div>
-            ))}
+            ))} */}
           </div>
         </motion.div>
       </div>
