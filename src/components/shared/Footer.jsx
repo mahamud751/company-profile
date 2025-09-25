@@ -20,214 +20,396 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   const [activeIcon, setActiveIcon] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
     checkMobile();
     window.addEventListener("resize", checkMobile);
+    window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
       window.removeEventListener("resize", checkMobile);
+      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
   return (
-    <footer className="pt-24 pb-8 relative overflow-hidden mt-auto bg-[#fd5001] text-white">
-      {/* Simple Animated Blobs */}
-      <motion.svg
-        className="absolute -top-24 -left-24 w-72 h-72 opacity-80 text-yellow-300"
-        viewBox="0 0 200 200"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        animate={{
-          rotate: [0, 360],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      >
-        <path
-          d="M43.1,-68.8C56.9,-60.6,64.8,-46.8,70.3,-33.8C75.8,-20.8,78.9,-8.4,78.5,3.3C78,15,74.1,26.7,67.3,36.3C60.5,45.9,50.9,53.4,40.1,59.5C29.3,65.6,17.3,70.3,5.4,66.9C-6.5,63.5,-13,52,-23.7,45.1C-34.4,38.1,-49.3,35.8,-57.4,27.6C-65.5,19.4,-66.8,5.3,-64.3,-7.3C-61.8,-19.9,-55.5,-30.9,-48.4,-39.6C-41.3,-48.3,-33.3,-54.6,-24.2,-62.1C-15.1,-69.6,-7.5,-78.3,3.3,-82.1C14.1,-85.9,28.2,-84.9,43.1,-68.8Z"
-          transform="translate(100 100)"
-        />
-      </motion.svg>
+    <footer className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0">
+        {/* Floating Particles */}
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-gradient-to-r from-orange-400 to-pink-500 rounded-full opacity-20"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [-20, -100, -20],
+              opacity: [0.2, 0.8, 0.2],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
 
-      <motion.svg
-        className="absolute -bottom-24 -right-24 w-96 h-96 opacity-70 text-cyan-400"
-        viewBox="0 0 200 200"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        animate={{
-          rotate: [360, 0],
-          scale: [1.1, 1, 1.1],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      >
-        <path
-          d="M42.6,-74.8C56.6,-66.7,66.9,-56.1,72.9,-44.2C78.9,-32.3,80.5,-19.1,79.3,-6.6C78.1,5.9,74.2,17.9,67.3,27.8C60.3,37.7,50.3,45.5,39,52.5C27.7,59.5,14.8,65.6,2.4,62.7C-10,59.8,-20.1,47.9,-30.3,40.8C-40.5,33.7,-50.7,31.5,-54.7,24.4C-58.7,17.3,-56.5,5.3,-56.2,-6.7C-55.9,-18.7,-57.5,-30.7,-52.3,-39.5C-47.1,-48.3,-35.2,-53.9,-23.6,-60.3C-12,-66.7,-6,-73.9,3.4,-79.2C12.8,-84.5,25.6,-87,42.6,-74.8Z"
-          transform="translate(100 100)"
+        {/* Gradient Orbs */}
+        <motion.div
+          className="absolute -top-40 -left-40 w-80 h-80 bg-gradient-to-r from-orange-500/30 to-pink-500/30 rounded-full blur-3xl"
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -50, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
         />
-      </motion.svg>
+        <motion.div
+          className="absolute -bottom-40 -right-40 w-96 h-96 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-full blur-3xl"
+          animate={{
+            x: [0, -80, 0],
+            y: [0, 30, 0],
+            scale: [1.2, 1, 1.2],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
 
-      {/* Simple Grain Background */}
-      <div className="absolute inset-0 opacity-5">
-        <div
-          className="absolute inset-0"
-          style={{ backgroundImage: `url(${grainImage.src})` }}
-        />
+        {/* Dynamic Grid */}
+        <div className="absolute inset-0 opacity-10">
+          <div
+            className="h-full w-full"
+            style={{
+              backgroundImage: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,0.15) 1px, transparent 1px)`,
+              backgroundSize: "50px 50px",
+            }}
+          />
+        </div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10 max-w-[1200px]">
-        {/* Simple Content Layout */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div>
+      <div className="relative z-10 pt-24 pb-8">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 max-w-[1200px]">
+          {/* Hero Section */}
+          {/* <motion.div
+            className="text-center mb-20"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             <motion.h2
-              className="text-4xl sm:text-5xl font-bold mb-6"
+              className="text-6xl sm:text-7xl md:text-8xl font-bold bg-gradient-to-r from-orange-400 via-pink-500 to-purple-600 bg-clip-text text-transparent mb-6"
               whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
-              Let's Talk
+              Let's Create
             </motion.h2>
-            <div className="space-y-2">
-              <motion.p
-                className="text-lg sm:text-xl hover:text-black text-white/80 transition-colors duration-200"
-                whileHover={{ x: 10 }}
-              >
-                <a href="mailto:crazysolve@gmail.com">crazysolve@gmail.com</a>
-              </motion.p>
-              <motion.p
-                className="text-lg sm:text-xl hover:text-black text-white/80 transition-colors duration-200"
-                whileHover={{ x: 10 }}
-              >
-                <a href="tel:+8801603795302">+8801603795302</a>
-              </motion.p>
-            </div>
-          </div>
+            <motion.p
+              className="text-xl sm:text-2xl text-gray-300 max-w-2xl mx-auto leading-relaxed"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
+              Something extraordinary together. Ready to bring your vision to
+              life?
+            </motion.p>
+          </motion.div> */}
 
-          <div>
-            {/* Simple Navigation */}
-            <div className="grid grid-cols-2 gap-8 mb-12">
-              <motion.div
-                className="space-y-4"
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
-              >
-                {["Works", "Service", "Blog", "About"].map((item, index) => (
-                  <motion.div key={item} whileHover={{ x: 5 }}>
-                    <Link
-                      href={`/${item.toLowerCase()}`}
-                      className="block text-base sm:text-lg hover:text-black transition-colors"
-                    >
-                      {item}
-                    </Link>
-                  </motion.div>
-                ))}
-              </motion.div>
-              <motion.div
-                className=""
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-              >
-                {[
-                  {
-                    city: "Mirpur 10",
-                    address: "D Block",
-                    state: "Mirpur, Dhaka",
-                  },
-                ].map((office, index) => (
+          {/* Main Content Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-20">
+            {/* Contact Info */}
+            <motion.div
+              className="lg:col-span-1"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-orange-500/50 transition-all duration-500 group">
+                <motion.h3
+                  className="text-2xl font-bold text-white mb-6 group-hover:text-orange-400 transition-colors"
+                  whileHover={{ x: 10 }}
+                >
+                  Get In Touch
+                </motion.h3>
+                <div className="space-y-4">
                   <motion.div
-                    key={office.city}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
+                    className="flex items-center space-x-4 p-4 rounded-2xl bg-gradient-to-r from-orange-500/10 to-pink-500/10 hover:from-orange-500/20 hover:to-pink-500/20 transition-all duration-300"
+                    whileHover={{ scale: 1.02, x: 5 }}
                   >
-                    <h3 className="font-semibold text-lg mb-2">
-                      {office.city}
-                    </h3>
-                    <p className="text-white/60">{office.address}</p>
-                    <p className="text-white/60">{office.state}</p>
+                    <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full flex items-center justify-center">
+                      <svg
+                        className="w-6 h-6 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-gray-400 text-sm">Email</p>
+                      <a
+                        href="mailto:crazysolve@gmail.com"
+                        className="text-white hover:text-orange-400 transition-colors font-medium"
+                      >
+                        crazysolve@gmail.com
+                      </a>
+                    </div>
                   </motion.div>
-                ))}
+
+                  <motion.div
+                    className="flex items-center space-x-4 p-4 rounded-2xl bg-gradient-to-r from-purple-500/10 to-blue-500/10 hover:from-purple-500/20 hover:to-blue-500/20 transition-all duration-300"
+                    whileHover={{ scale: 1.02, x: 5 }}
+                  >
+                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
+                      <svg
+                        className="w-6 h-6 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-gray-400 text-sm">Phone</p>
+                      <a
+                        href="tel:+8801603795302"
+                        className="text-white hover:text-purple-400 transition-colors font-medium"
+                      >
+                        +8801603795302
+                      </a>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Navigation */}
+            <motion.div
+              className="lg:col-span-1"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+            >
+              <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-purple-500/50 transition-all duration-500 group">
+                <motion.h3
+                  className="text-2xl font-bold text-white mb-6 group-hover:text-purple-400 transition-colors"
+                  whileHover={{ x: 10 }}
+                >
+                  Quick Links
+                </motion.h3>
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { name: "Works", href: "/works", icon: "💼" },
+                    { name: "Service", href: "/service", icon: "⚡" },
+                    { name: "Blog", href: "/blog", icon: "📝" },
+                    { name: "About", href: "/about", icon: "👥" },
+                  ].map((item, index) => (
+                    <motion.div
+                      key={item.name}
+                      whileHover={{ scale: 1.05, x: 5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <Link
+                        href={item.href}
+                        className="flex items-center space-x-3 p-3 rounded-xl bg-gradient-to-r from-white/5 to-white/10 hover:from-purple-500/20 hover:to-pink-500/20 transition-all duration-300 group"
+                      >
+                        <span className="text-xl group-hover:scale-110 transition-transform">
+                          {item.icon}
+                        </span>
+                        <span className="text-white group-hover:text-purple-300 transition-colors font-medium">
+                          {item.name}
+                        </span>
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Location */}
+            <motion.div
+              className="lg:col-span-1"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.8 }}
+            >
+              <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-blue-500/50 transition-all duration-500 group">
+                <motion.h3
+                  className="text-2xl font-bold text-white mb-6 group-hover:text-blue-400 transition-colors"
+                  whileHover={{ x: 10 }}
+                >
+                  Our Location
+                </motion.h3>
+                <motion.div
+                  className="p-6 rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 hover:from-blue-500/20 hover:to-purple-500/20 transition-all duration-300"
+                  whileHover={{ scale: 1.02, y: -5 }}
+                >
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg
+                        className="w-6 h-6 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white text-lg mb-2">
+                        Mirpur 10
+                      </h4>
+                      <p className="text-gray-300 leading-relaxed">
+                        D Block
+                        <br />
+                        Mirpur, Dhaka
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Social Media & Bottom Section */}
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+          >
+            {/* Decorative Line */}
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-12" />
+
+            <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
+              {/* Social Media */}
+              <div className="flex flex-col items-center lg:items-start">
+                <h4 className="text-white font-semibold mb-4 text-lg">
+                  Follow Our Journey
+                </h4>
+                <div className="flex gap-4">
+                  {[
+                    {
+                      icon: Facebook,
+                      href: "https://www.facebook.com/crazysolve",
+                      label: "Facebook",
+                      color: "from-blue-500 to-blue-600",
+                      hoverColor: "hover:shadow-blue-500/25",
+                    },
+                    {
+                      icon: Twitter,
+                      href: "https://twitter.com/crazysolve",
+                      label: "Twitter",
+                      color: "from-sky-400 to-sky-500",
+                      hoverColor: "hover:shadow-sky-400/25",
+                    },
+                    {
+                      icon: Linkedin,
+                      href: "https://linkedin.com/company/crazysolve",
+                      label: "LinkedIn",
+                      color: "from-blue-600 to-blue-700",
+                      hoverColor: "hover:shadow-blue-600/25",
+                    },
+                  ].map((social, index) => (
+                    <motion.div
+                      key={social.label}
+                      whileHover={{ scale: 1.1, y: -5 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ type: "spring", stiffness: 400 }}
+                    >
+                      <Link
+                        href={social.href}
+                        aria-label={social.label}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`
+                          w-14 h-14 rounded-2xl bg-gradient-to-r ${social.color} 
+                          flex items-center justify-center text-white 
+                          shadow-lg ${social.hoverColor} hover:shadow-xl 
+                          transition-all duration-300 group
+                        `}
+                      >
+                        <social.icon className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Newsletter Signup */}
+              <motion.div
+                className="flex flex-col items-center lg:items-end text-center lg:text-right"
+                whileHover={{ scale: 1.02 }}
+              >
+                <h4 className="text-white font-semibold mb-4 text-lg">
+                  Stay Updated
+                </h4>
+                <div className="flex flex-col sm:flex-row gap-3 max-w-sm">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="px-4 py-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500/50 transition-all duration-300"
+                  />
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-6 py-3 bg-gradient-to-r from-orange-500 to-pink-500 rounded-xl text-white font-medium hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300"
+                  >
+                    Subscribe
+                  </motion.button>
+                </div>
               </motion.div>
             </div>
 
-            {/* Simple Offices */}
-          </div>
-        </motion.div>
-
-        {/* Simple Bottom Section */}
-        <motion.div
-          className="flex flex-col sm:flex-row sm:justify-between items-center gap-6 border-t border-white/20 pt-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-        >
-          {/* Simple Social Icons */}
-          <nav className="flex gap-5 order-2 sm:order-1">
-            {[
-              {
-                icon: Facebook,
-                href: "https://www.facebook.com/crazysolve",
-                label: "Facebook",
-              },
-              {
-                icon: Twitter,
-                href: "https://twitter.com/crazysolve",
-                label: "Twitter",
-              },
-              {
-                icon: Linkedin,
-                href: "https://linkedin.com/company/crazysolve",
-                label: "LinkedIn",
-              },
-            ].map((social, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ scale: 1.2, y: -3 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <Link
-                  href={social.href}
-                  aria-label={social.label}
-                  target="_blank"
-                  rel="noopener noreferrer"
+            {/* Bottom Copyright */}
+            <div className="mt-16 pt-8 border-t border-white/10">
+              <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+                <motion.p
+                  className="text-gray-400 text-sm"
+                  whileHover={{ color: "#ffffff" }}
                 >
-                  <social.icon className="text-white hover:text-gray-300 transition-colors" />
-                </Link>
-              </motion.div>
-            ))}
-          </nav>
-
-          {/* Simple Legal Links */}
-          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-sm text-white/90 order-1 sm:order-2">
-            <p>© 2020 – {currentYear} Crazy Solve</p>
-            {/* {["Privacy", "Terms", "Sitemap"].map((item) => (
-              <motion.div key={item} whileHover={{ x: 3 }}>
-                <Link
-                  href={`/${item.toLowerCase()}`}
-                  className="hover:text-black transition-colors duration-200"
-                >
-                  {item}
-                </Link>
-              </motion.div>
-            ))} */}
-          </div>
-        </motion.div>
+                  © 2020 – {currentYear} Crazy Solve. Crafted with ❤️ for
+                  innovation.
+                </motion.p>
+                <div className="flex gap-6 text-sm">
+                  {["Privacy", "Terms", "Cookies"].map((item) => (
+                    <motion.div key={item} whileHover={{ y: -2 }}>
+                      <Link
+                        href={`/${item.toLowerCase()}`}
+                        className="text-gray-400 hover:text-white transition-colors duration-200"
+                      >
+                        {item}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Mobile Bottom Dock Navigation */}
