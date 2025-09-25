@@ -81,7 +81,7 @@ export default function BlogDetailsHero({ blogMain }) {
             </div>
             <div>
               <p className="text-sm font-semibold" style={{ color: "white" }}>
-                Md Rafatul Islam
+                Mr X
               </p>
               <p
                 className="text-sm"
