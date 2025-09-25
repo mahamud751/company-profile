@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import {
   motion,
   useScroll,
@@ -41,7 +42,7 @@ export default function HeroSection() {
     "https://i.ibb.co.com/9HJrcDZf/4.webp",
     "https://i.ibb.co.com/3y1vGBcP/1.webp",
   ];
-  
+
   const logos = [
     {
       id: 1,
@@ -306,7 +307,7 @@ export default function HeroSection() {
       >
         {/* Enhanced Left Content */}
         <motion.div
-          className="space-y-8 text-center md:text-left"
+          className="space-y-0 text-center md:text-left pt-4"
           variants={itemVariants}
         >
           {/* Floating Achievement Badge */}
@@ -326,7 +327,7 @@ export default function HeroSection() {
 
           {/* Enhanced Title with Multiple Animations */}
           <motion.h1
-            className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight relative"
+            className="text-5xl sm:text-6xl lg:text-7xl xl:text-7xl font-black leading-tight relative"
             variants={itemVariants}
           >
             {/* Animated Background Text Effect */}
@@ -535,27 +536,28 @@ export default function HeroSection() {
               <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.a>
 
-            <motion.a
-              href="#works"
-              className="group relative inline-flex items-center text-lg font-bold text-[#fd5001] transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="relative z-10">See Our Works</span>
-              <motion.div
-                className="ml-3"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
+            <Link href="/works" passHref>
+              <motion.a
+                className="group relative inline-flex items-center text-lg font-bold text-[#fd5001] transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <ArrowUpRight className="w-6 h-6 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-              </motion.div>
-              <motion.span
-                className="absolute left-0 -bottom-1 h-1 bg-gradient-to-r from-[#fd5001] to-[#ff8c00] rounded-full"
-                initial={{ width: "80%" }}
-                whileHover={{ width: "100%" }}
-                transition={{ duration: 0.3 }}
-              />
-            </motion.a>
+                <span className="relative z-10">See Our Works</span>
+                <motion.div
+                  className="ml-3"
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <ArrowUpRight className="w-6 h-6 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                </motion.div>
+                <motion.span
+                  className="absolute left-0 -bottom-1 h-1 bg-gradient-to-r from-[#fd5001] to-[#ff8c00] rounded-full"
+                  initial={{ width: "80%" }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.a>
+            </Link>
           </motion.div>
 
           {/* Enhanced Logo Carousel */}

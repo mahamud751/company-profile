@@ -6,9 +6,7 @@ export function Provider({ children }) {
   return (
     <div>
       <CustomNavbar />
-      <main>
-        {children}
-      </main>
+      <main>{children}</main>
       <Footer />
     </div>
   );
