@@ -307,7 +307,7 @@ export default function HeroSection() {
       >
         {/* Enhanced Left Content */}
         <motion.div
-          className="space-y-0 text-center md:text-left pt-4"
+          className="space-y-0 text-center md:text-left pt-12 md:pt-4"
           variants={itemVariants}
         >
           {/* Floating Achievement Badge */}

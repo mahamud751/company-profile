@@ -84,7 +84,7 @@ export default function Header() {
             <Link
               href="/"
               onClick={() => setActive("Home")}
-              className="w-20 h-20 flex items-center justify-center shrink-0"
+              className="w-20 h-20 flex items-center justify-center shrink-0 ms-12 md:ms-0"
             >
               <Image
                 src="/logo.png"
